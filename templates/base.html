@@ -1,0 +1,56 @@
+
+{% load static%}
+<link href="{% static 'layouts/vertical-light-menu/css/light/loader.css' %}" rel="stylesheet" type="text/css" />
+<link href="{% static 'layouts/vertical-light-menu/css/dark/loader.css' %}" rel="stylesheet" type="text/css" />
+<script src="{% static 'layouts/vertical-light-menu/loader.js' %}"></script>
+
+<!-- BEGIN GLOBAL MANDATORY STYLES -->
+<link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700" rel="stylesheet">
+<link href="{% static 'src/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css" />
+<link href="{% static 'layouts/vertical-light-menu/css/light/plugins.css' %}" rel="stylesheet" type="text/css" />
+<link href="{% static 'layouts/vertical-light-menu/css/dark/plugins.css' %}" rel="stylesheet" type="text/css" />
+<!-- END GLOBAL MANDATORY STYLES -->
+
+<!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM STYLES -->
+<link href="{% static 'src/plugins/src/apex/apexcharts.css' %}" rel="stylesheet" type="text/css">
+<link href="{% static 'src/assets/css/light/dashboard/dash_1.css' %}" rel="stylesheet" type="text/css" />
+<link href="{% static 'src/assets/css/dark/dashboard/dash_1.css' %}" rel="stylesheet" type="text/css" />
+<!-- END PAGE LEVEL PLUGINS/CUSTOM STYLES -->
+
+   <!--     Fonts and icons     -->
+   <link href="{% static 'src/assets/css/font-awesome.min.css' %}" rel="stylesheet">
+   <!-- CSS Just for demo purpose, don't include it in your project -->
+   <link href="{% static 'src/assets/css/etd-style.min.css' %}" rel="stylesheet">
+   <link href="{% static 'src/assets/css/NewAddedStyle.min.css' %}" rel="stylesheet">
+   <link href="{% static 'src/assets/css/tendersCard.min.css' %}" rel="stylesheet">
+   <!-- <link href="{% static 'grid.css' %}" rel="stylesheet"> -->
+   <script type="text/javascript" async=""
+      src="{% static 'src/assets/js/adrum-ext.a5e921eab2dde2c5ab4b79ea636b8271.js.download' %}"></script>
+   <script src="{% static 'src/assets/js/jquery-3.6.0.min.js.download' %}"></script>
+
+
+{% include 'parts/sidebar.html' %}
+{% include 'parts/header.html' %}
+
+{% block content %}
+
+
+
+{% endblock content %}
+
+{% include 'parts/footer.html' %}
+
+
+    <!-- BEGIN GLOBAL MANDATORY SCRIPTS -->
+    <script src="{% static 'src/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'src/plugins/src/perfect-scrollbar/perfect-scrollbar.min.js' %}"></script>
+    <script src="{% static 'src/plugins/src/mousetrap/mousetrap.min.js' %}"></script>
+    <script src="{% static 'src/plugins/src/waves/waves.min.js' %}"></script>
+    <script src="{% static 'layouts/vertical-light-menu/app.js' %}"></script>
+    <!-- END GLOBAL MANDATORY SCRIPTS -->
+
+    <!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM SCRIPTS -->
+    <script src="{% static 'src/plugins/src/apex/apexcharts.min.js' %}"></script>
+    <script src="{% static 'src/assets/js/dashboard/dash_1.js' %}"></script>
+    <!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM SCRIPTS -->
+    <script src="{% static 'src/assets/js/adrum.js.download' %}"></script>
