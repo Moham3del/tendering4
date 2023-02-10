@@ -5,28 +5,100 @@
 
 {% block content %}
 
-    <!--  BEGIN MAIN CONTAINER  -->
-    <div class="main-container" id="container">
+<!--  BEGIN MAIN CONTAINER  -->
+<div class="main-container" id="container">
 
-        <div class="overlay"></div>
-        <div class="search-overlay"></div>
-        <!--  BEGIN CONTENT AREA  -->
-        <div id="content" class="main-content">
-            <div class="layout-px-spacing">
-                <div class="middle-content container-xxl p-0">
+    <div class="overlay"></div>
+    <div class="search-overlay"></div>
+    <!--  BEGIN CONTENT AREA  -->
+    <div id="content" class="main-content">
+        <div class="layout-px-spacing">
+            <div class="middle-content container-xxl p-0">
 
-                    <div class="row layout-top-spacing">
-                        <h1>
-                            tender report
-                        </h1>
+                <div class="row layout-top-spacing">
+
+                    <a href="{% url 'tender_details' %}">
+                        الرجوع الى جميع المنافسات
+                        <div class="ripple-container"></div>
+                    </a>
+                    <div class="s007">
+                        <form method="GET">
+                          <div class="inner-form">
+                            
+                            <div class="advance-search">
+                              
+                              <div class="row">
+                                <div class="input-field">
+                                  <div class="input-select">
+                                    النشاط الأساسي {{myFilter.form.management}}
+                                  </div>
+                                </div>
+                                <div class="input-field">
+                                  <div class="input-select">
+                                    المالك {{myFilter.form.owner}}
+                                  </div>
+                                </div>
+
+                                <div class="input-field">
+                                    <button class="btn-search">Search</button>
+                                  </div>
+                              
+                                
+                                
+                                
+                                
+                              </div>
+                              
+                              
+                            </div>
+                          </div>
+                        </form>
                     </div>
+                    <br>
+                    <h1>
 
+                        <div class="tabs">
+                            <div class="tabby-tab">
+                                <input type="radio" id="tab-1" name="tabby-tabs" checked>
+                                <label for="tab-1">تقرير المناقصات الجارية</label>
+                                <div class="tabby-content">
+                                    <table class="table table-striped mb-0">
+                                        <thead style="background-color: #002d72;">
+                                            <tr>
+                                                <th scope="col">المالك</th>
+                                                <th scope="col">القسم</th>
+                                                <th scope="col">الرقم</th>
+                                                <th scope="col">الاسم</th>
+                                                <th scope="col">تاريخ التقديم</th>
+                                                <th scope="col">الأيام المتبقية</th>
+                                                <th scope="col">الحالة</th>
+                                            </tr>
+                                        </thead>
+                                        {% for x in myFilter.qs %}
+                                        <tbody>
+                                            <tr>
+                                                <td>{{x.owner}}</td>
+                                                <td>{{x.management}}</td>
+                                                <td>{{x.no}}</td>
+                                                <td>{{x.title}}</td>
+                                                <td>{{x.submit_date}}</td>
+                                                <td>{{x.Days_till}}</td>
+                                                <td>{{x.t_status}}</td>
+                                            </tr>
+
+                                        </tbody>
+                                        {% endfor %}
+                                    </table>
+                                </div>
+                            </div>
+                    </h1>
                 </div>
+
             </div>
         </div>
-        <!--  END CONTENT AREA  -->
     </div>
-    <!-- END MAIN CONTAINER -->
+    <!--  END CONTENT AREA  -->
+</div>
+<!-- END MAIN CONTAINER -->
 
 {% endblock content %}
-
