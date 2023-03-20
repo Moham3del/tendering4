@@ -3075,7 +3075,8 @@ fieldset:disabled .btn {
   background: #ebedf2;
   padding: 10px 21px 10px 21px;
   vertical-align: middle;
-  font-weight: 500;
+  /* font-weight: 500; */
+  font-size: 20;
 }
 .table thead tr.table-row-hidden {
   border: none;

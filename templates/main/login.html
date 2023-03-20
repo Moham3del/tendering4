@@ -5,7 +5,7 @@
             <img src="/static/src/assets/img/rawaf.png" alt="">
             <br>
             <div class="text-center mt-4 name">
-            Tendering, Contracts and Technical Affairs
+            <h1 style="color:#bd9f22;">TCT</h1>
                 {% for msg in messages %}
                 <p>{{msg}}</p>
                 {% endfor %}
@@ -23,20 +23,15 @@
                 <input type="password" name="password" placeholder="Password">
             </div>
             
-            <button class="btn mt-3">Login</button>
+            <button class="btn mt-3"><h3>دخول</h3></button>
             
         </form>
 
         <div class="text-center fs-6">
 
-            or 
-            <br>
 
-            <a href="{% url 'register' %}">Sign up</a>
 
-            <br>
-            
-            <a href="{% url 'login_ar' %}">العربية</a>
+
         </div>
 
     </div>

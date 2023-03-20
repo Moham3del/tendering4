@@ -5,100 +5,99 @@
 
 {% block content %}
 
-<!--  BEGIN MAIN CONTAINER  -->
-<div class="main-container" id="container">
+<div class="layout-px-spacing">
+  <div class="middle-content container-xxl p-0">
 
-    <div class="overlay"></div>
-    <div class="search-overlay"></div>
-    <!--  BEGIN CONTENT AREA  -->
-    <div id="content" class="main-content">
-        <div class="layout-px-spacing">
-            <div class="middle-content container-xxl p-0">
 
-                <div class="row layout-top-spacing">
-
-                    <a href="{% url 'tender_details' %}">
-                        الرجوع الى جميع المنافسات
-                        <div class="ripple-container"></div>
-                    </a>
-                    <div class="s007">
-                        <form method="GET">
-                          <div class="inner-form">
+          <div class="card">
+            <div class="card-icon mb-4">
+                <br>
+                
+                
+            <form method="GET">
+                <table class="table table-striped mb-0">
+                    <thead style="background-color: #002d72;">
+                        <tr>
+    
                             
-                            <div class="advance-search">
-                              
-                              <div class="row">
-                                <div class="input-field">
-                                  <div class="input-select">
-                                    النشاط الأساسي {{myFilter.form.management}}
-                                  </div>
-                                </div>
-                                <div class="input-field">
-                                  <div class="input-select">
-                                    المالك {{myFilter.form.owner}}
-                                  </div>
-                                </div>
-
-                                <div class="input-field">
-                                    <button class="btn-search">Search</button>
-                                  </div>
-                              
-                                
-                                
-                                
-                                
-                              </div>
-                              
-                              
-                            </div>
-                          </div>
-                        </form>
-                    </div>
-                    <br>
-                    <h1>
-
-                        <div class="tabs">
-                            <div class="tabby-tab">
-                                <input type="radio" id="tab-1" name="tabby-tabs" checked>
-                                <label for="tab-1">تقرير المناقصات</label>
-                                <div class="tabby-content">
-                                    <table class="table table-striped mb-0">
-                                        <thead style="background-color: #002d72;">
-                                            <tr>
-                                                <th scope="col">المالك</th>
-                                                <th scope="col">القسم</th>
-                                                <th scope="col">الرقم</th>
-                                                <th scope="col">الاسم</th>
-                                                <th scope="col">تاريخ التقديم</th>
-                                                <th scope="col">الأيام المتبقية</th>
-                                                <th scope="col">الحالة</th>
-                                            </tr>
-                                        </thead>
-                                        {% for x in myFilter.qs %}
-                                        <tbody>
-                                            <tr>
-                                                <td>{{x.owner}}</td>
-                                                <td>{{x.management}}</td>
-                                                <td>{{x.no}}</td>
-                                                <td>{{x.title}}</td>
-                                                <td>{{x.submit_date}}</td>
-                                                <td>{{x.Days_till}}</td>
-                                                <td>{{x.t_status}}</td>
-                                            </tr>
-
-                                        </tbody>
-                                        {% endfor %}
-                                    </table>
-                                </div>
-                            </div>
-                    </h1>
-                </div>
-
+                            <th scope="col" style="text-align: center;">المالك</th>
+                            <th scope="col" style="text-align: center;">النشاط الأساسي</th>
+    
+                        </tr>
+                    </thead>
+                    
+                    <tbody>
+                        <tr>
+                            
+                            <td style="text-align: center;">{{myFilter.form.management}}</td>
+                            <td style="text-align: center;">{{myFilter.form.owner}}</td>
+                        </tr>
+                    </tbody>
+    
+                    
+                    
+                    
+                </table>
+                <br>
+                <input type="submit" name="txt" class="mt-1 btn btn-add-new-contract" value="بحث" >
+            </form>
+    
             </div>
         </div>
-    </div>
-    <!--  END CONTENT AREA  -->
+          <br>
+          <h1>
+              
+              <div class="tabs">
+                  <div class="tabby-tab">
+                      <input type="radio" id="tab-1" name="tabby-tabs" checked>
+                      <label for="tab-1">تقرير المناقصات الجارية ( {{detail_count}} )</label>
+                      <div class="tabby-content">
+                      <form method="POST" id="myfrm">
+                          <table class="table table-striped mb-0">
+                              <thead style="background-color: #002d72;">
+                                  <tr>
+                                      <th scope="col">الاسم</th>
+                                      <th scope="col">تاريخ التقديم</th>
+                                      <th scope="col">المالك</th>
+                                      <th scope="col">القسم</th> 
+                                  </tr>
+                              </thead>
+                              {% for x in myFilter.qs %}
+                              <tbody>
+                                  <tr>
+                                      <td>{{x.no}} ـ {{x.title}}</td>
+                                      <td>  {{x.submit_date}} ـ ـ ـ ({{x.Days_till|cut:'days'|add:'يوم'}})</td>
+                                      <td>{{x.owner}}</td>
+                                      <td>{{x.management}}</td> 
+                                      <td></td>
+                                      
+                                      <td><a href="{% url 'tender_details_details' x.id %}">التفاصيل</a></a></td>
+                                      {% if user_tender_permission.update_tender_detail == 'Yes' %}
+                                      <td><a href="{% url 'update_tender' x.id %}">تعديل</a></td>
+                                      {% endif %}
+                                  </tr>
+
+                              </tbody>
+                              {% endfor %}
+                          </table>
+                      </form>
+                      <br>
+                      <button id="print-button"  class="mt-1 btn btn-add-new-contract">طباعة التقرير</button>
+
+                      </div>
+                    
+
+                  </div>
+              
+              
+          </h1>
+
+      </div>
+
+  </div>
 </div>
-<!-- END MAIN CONTAINER -->
+
+            
+<script src="{% static 'printform/contract.js' %}"></script>
 
 {% endblock content %}

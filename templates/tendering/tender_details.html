@@ -1,178 +1,171 @@
 {% extends 'base.html' %} {% load static%} {% block content %}
-<div class="container-grid">
-  <!--  BEGIN MAIN CONTAINER  -->
-  <div class="main-container layout-top-spacing content-grid" id="container">
-    <div class="overlay"></div>
-    <div class="search-overlay"></div>
+<div class="layout-px-spacing">
+  <div id="form_sizing" class="col-lg-12">
+    <div class="seperator-header-add-new-contract" style="text-align: center;">
+        <br>
+        <h4 class="">جميع المنافسات</h4>
+    </div>
+</div>
+  <div class="middle-content container-xxl p-0">
 
-    <!--  BEGIN CONTENT AREA  -->
-    <div id="content" class="main-content">
-      <div class="layout-px-spacing">
-        <div class="middle-content container-xxl p-0">
-          <div class="row layout-top-spacing">
-            <div class="s007">
-              <form method="GET">
-                <div class="inner-form">
-                  <div class="basic-search">
-                    <div class="input-field">
-                      <div class="icon-wrap">
-                        
-                      </div>
-                        {{myFilter.form.no}}
-                      <div class="result-count">
-                        <span>  رقم المنافسة  </span></div>
+    <div class="card" style="margin-top: 5%;">
+      <div class="card-icon mb-4">
+          <br>
+          
+          
+        <form method="GET">
+            <table class="table table-striped mb-0">
+                <thead style="background-color: #002d72;">
+                    <tr>
 
                         
-                    </div>
-                  </div>
-                  <div class="advance-search">
-                    
-                    <div class="row">
-                      <div class="input-field">
-                        <div class="input-select">
-                          النشاط الأساسي {{myFilter.form.management}}
-                            
-                        </div>
-                      </div>
-                      <div class="input-field">
-                        <div class="input-select">
-                          المالك {{myFilter.form.owner}}
-                        </div>
-                      </div>
+                        <th scope="col" style="text-align: center;">رقم المنافسة</th>
+                        <th scope="col" style="text-align: center;">اسم المنافسة</th>
+                        <th scope="col" style="text-align: center;">المالك</th>
+                        <th scope="col" style="text-align: center;">النشاط الأساسي</th>
 
-                      <div class="input-field">
-                        <div class="input-select">
-                          الحالة {{myFilter.form.t_status}}
-                        </div>
-                      </div>
+                    </tr>
+                </thead>
+                
+                <tbody>
+                    <tr>
+                        
+                        <td style="text-align: center;">{{myFilter.form.no}}</td>
+                        <td style="text-align: center;">{{myFilter.form.title}}</td>
+                        <td style="text-align: center;">{{myFilter.form.management}}</td>
+                        <td style="text-align: center;">{{myFilter.form.owner}}</td>
+                    </tr>
+                </tbody>
 
-                      <div class="input-field">
-                        <button class="btn-search">Search</button>
-                      </div>
-                      
-                    </div>
-                    
-                  </div>
-                </div>
-              </form>
-          </div>
+                
+                
+                
+            </table>
+            <br>
+            <input type="submit" name="txt" class="mt-1 btn btn-add-new-contract" value="بحث" >
+        </form>
+
+      </div>
+    </div>
+  </div>
+  <br>
+  <div>
+    <div class="row">
+
+
+
+
+      {% for x in myFilter.qs %}
+
+      <div class="col-12 col-md-12 mb-4">
+        <div data-ref="221239853286" class="tender-card rounded card mt-0 mb-0">
           <div class="row">
-
-            {% for x in myFilter.qs %}
-
-            <div class="col-12 col-md-12 mb-4">
-              <div data-ref="221239853286" class="tender-card rounded card mt-0 mb-0">
+            <div class="col-12 col-md-9 p-0">
+              <div class="tender-metadata border-left border-bottom">
                 <div class="row">
-                  <div class="col-12 col-md-9 p-0">
-                    <div class="tender-metadata border-left border-bottom">
-                      <div class="row">
-                        <div class="col-12 border-bottom">
-                          <div class="row">
-                            <div class="col-12">
-                              <h3>
-                                <a href="{% url 'tender_details_details' x.id %}">{{x.title}}</a>
-                              </h3>
-                            </div>
-                            <div class="tender-date border-left">
-                              <div class="row">
-                                <div class="col-12 col-md-3">
-                                  <label class="col-12 p-0 mb-3">
-                                    رقم المنافسة
-                                  </label>
-                                  <span>{{x.no}}</span>
-                                </div>
-                                <div class="col-12 col-md-3">
-                                  <label class="col-12 p-0 mb-3">
-                                    المالك
-                                  </label>
-                                  <span>{{x.owner}}</span>
-                                </div>
-
-                                <div class="col-12 col-md-3">
-                                  <label class="col-12 p-0 mb-3">
-                                    النشاط الأساسي
-                                  </label>
-                                  <span>{{x.management}}</span>
-                                </div>
-
-                                <div class="col-12 col-md-3">
-                                  <label class="col-12 p-0 mb-3">
-                                    حالة المنافسة
-                                  </label>
-                                  <span>{{x.t_status}}</span>
-                                </div>
-                              </div>
-                            </div>
+                  <div class="col-12 border-bottom">
+                    <div class="row">
+                      <div class="col-12">
+                        <h3>
+                          <a href="{% url 'tender_details_details' x.id %}">{{x.title}}</a>
+                        </h3>
+                      </div>
+                      <div class="tender-date border-left">
+                        <div class="row">
+                          <div class="col-12 col-md-3">
+                            <label class="col-12 p-0 mb-3">
+                              رقم المنافسة
+                            </label>
+                            <span>{{x.no}}</span>
                           </div>
-                        </div>
-                        <div class="tender-date border-left">
-                          <div class="row">
-                            <div class="col-12 col-md-3">
-                              <label class="col-12 p-0 mb-3">
-                                تاريخ الضمان الابتدائي
-                              </label>
-                              <span>{{x.insurance_letter_date}}</span>
-                            </div>
+                          <div class="col-12 col-md-3">
+                            <label class="col-12 p-0 mb-3">
+                              المالك
+                            </label>
+                            <span>{{x.owner}}</span>
+                          </div>
 
-                            <div class="col-12 col-md-3">
-                              <label class="col-12 p-0 mb-3">
-                                تاريخ استحقاق خطاب تأكيد المشاركة
-                              </label>
-                              <span>{{x.participation_confirmation_letter_due_date}}</span>
-                            </div>
+                          <div class="col-12 col-md-3">
+                            <label class="col-12 p-0 mb-3">
+                              النشاط الأساسي
+                            </label>
+                            <span>{{x.management}}</span>
+                          </div>
 
-                            <div class="col-12 col-md-3">
-                              <label class="col-12 p-0 mb-3">
-                                آخر موعد لاستلام الاستفسارات
-                              </label>
-                              <span>{{x.receiving_inquiries_Deadline}}</span>
-                            </div>
-                            <div class="col-12 col-md-3">
-                              <label class="col-12 p-0 mb-3">
-                                آخر موعد لتقديم العروض
-                              </label>
-                              <span>{{x.submit_date}}</span>
-                            </div>
-
-
+                          <div class="col-12 col-md-3">
+                            <label class="col-12 p-0 mb-3">
+                              حالة المنافسة
+                            </label>
+                            <span>{{x.t_status}}</span>
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                  <div class="col-12 col-md-3 p-0">
-                    <div class="tender-chart border-bottom">
-                      {% if x.t_status == 'جارية' %}
-                      <a href="{% url 'update_tender' x.id %}"><label class="col-12 p-0 mb-3">تعديل</label></a>
-                      {% endif %}
-
-                      <div data-bar="221239853286" data-pct="{{x.Days_till}}" class="cont-bar">
-
-                        <svg width="200" height="200" viewport="0 0 100 100" version="1.1"
-                          xmlns="http://www.w3.org/2000/svg" class="svg-bar">
-                          <circle r="90" cx="100" cy="100" fill="transparent" stroke-dasharray="565.48"
-                            stroke-dashoffset="0" class="221239853286" style="
-                                stroke-dashoffset: 205px;
-                                transition: all 1s linear 0s;
-                              "></circle>
-
-                        </svg>
+                  <div class="tender-date border-left">
+                    <div class="row">
+                      <div class="col-12 col-md-3">
+                        <label class="col-12 p-0 mb-3">
+                          تاريخ الضمان الابتدائي
+                        </label>
+                        <span>{{x.insurance_letter_date}}</span>
                       </div>
+
+                      <div class="col-12 col-md-3">
+                        <label class="col-12 p-0 mb-3">
+                          تاريخ استحقاق خطاب تأكيد المشاركة
+                        </label>
+                        <span>{{x.participation_confirmation_letter_due_date}}</span>
+                      </div>
+
+                      <div class="col-12 col-md-3">
+                        <label class="col-12 p-0 mb-3">
+                          آخر موعد لاستلام الاستفسارات
+                        </label>
+                        <span>{{x.receiving_inquiries_Deadline}}</span>
+                      </div>
+                      <div class="col-12 col-md-3">
+                        <label class="col-12 p-0 mb-3">
+                          آخر موعد لتقديم العروض
+                        </label>
+                        <span>{{x.submit_date}}</span>
+                      </div>
+
+
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-            {% endfor %}
+            <div class="col-12 col-md-3 p-0">
+              <div class="tender-chart border-bottom">
+                {% if x.t_status == 'جارية' %}
+                  
+                      <a href="{% url 'update_tender' x.id %}"><label class="col-12 p-0 mb-3">تعديل {{request.user.groups.name}}</label></a>
+                  
+                {% endif %}
+
+                <div data-bar="221239853286" data-pct="{{x.Days_till}}" class="cont-bar">
+
+                  <svg width="200" height="200" viewport="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                    class="svg-bar">
+                    <circle r="90" cx="100" cy="100" fill="transparent" stroke-dasharray="565.48" stroke-dashoffset="0"
+                      class="221239853286" style="
+                          stroke-dashoffset: 205px;
+                          transition: all 1s linear 0s;
+                        "></circle>
+
+                  </svg>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
+      {% endfor %}
     </div>
+    
   </div>
-  <!--  END CONTENT AREA  -->
-</div>
-<!-- END MAIN CONTAINER -->
-<!-- -------------------------------------------------- -->
 </div>
 
 {% endblock content %}

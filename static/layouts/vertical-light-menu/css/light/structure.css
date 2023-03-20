@@ -162,6 +162,7 @@ code {
 margin-top: 50px;
   padding: 0 24px !important;
   min-height: calc(100vh - 112px) !important;
+  direction: rtl;
 }
 
 .widget.box .widget-header {
@@ -1151,7 +1152,7 @@ body .navbar .dark-mode, body:not(.dark) .navbar .dark-mode {
   content: "";
   position: absolute;
   background-color: rgba(255, 255, 255, 0.07);
-  background-color: #4361ee;
+  background-color: #c19b2e;
   width: 15px;
   height: 42px;
   width: 100%;

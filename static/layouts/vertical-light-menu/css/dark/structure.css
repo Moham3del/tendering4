@@ -1089,7 +1089,7 @@ body.dark #sidebar ul.menu-categories ul.submenu > li.active:before {
   content: "";
   position: absolute;
   background-color: rgba(255, 255, 255, 0.07);
-  background-color: #4361ee;
+  background-color: #c19b2e;
   width: 15px;
   height: 42px;
   width: 100%;

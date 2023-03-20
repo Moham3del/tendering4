@@ -6,17 +6,12 @@ from django.contrib.auth import authenticate, logout
 from django.contrib.auth import login as myLogin
 from django.contrib.auth.decorators import login_required
 from .decorators import *
+from .models import *
 # Create your views here.
 
 from .forms import *
 
-@login_required(login_url='login')
-@allowedUsers(allowedGroups=['allowedlogin'])
-def index(request):
-    if request.user.is_staff:
-        return render(request, 'main/index.html')
-    else:
-        return redirect('user_profile')
+
 
 
 @login_required(login_url='login')
@@ -65,9 +60,8 @@ def userLogin(request):
         if user is not None:
             myLogin(request, user)
             if request.user.is_staff:
-                return redirect('tender_details')
-            else:
-                return redirect('user_profile')
+                return redirect('home')
+            
         else:
             messages.info(request, 'User Name or Password not Valid')
 
@@ -83,7 +77,9 @@ def userLogin_ar(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             myLogin(request, user)
-            return redirect('index')
+            if request.user.is_staff:
+                return redirect('home')
+            
         else:
             messages.info(request, 'User Name or Password not Valid')
 
@@ -97,9 +93,30 @@ def userLogout(request):
 
 
 @login_required(login_url='login')
-def userProfile(request):
+def No_Permission(request):
     context = {}
-    return render(request, 'main/profile.html', context)
+    return render(request, 'main/no_permission.html', context)
+
+@login_required(login_url='login')
+def home(request):
+    user_profile = User_Profile.objects.get(user=request.user)
+    user_tender_permission = User_TenderPermission.objects.get(user=request.user)
+    user_contract_permission = User_ContractPermission.objects.get(user=request.user)
+    user_project_permission = User_ProjectPermission.objects.get(user=request.user)
+    context = {'user_profile':user_profile,
+               'user_tender_permission':user_tender_permission,
+               'user_contract_permission':user_contract_permission,
+               'user_project_permission':user_project_permission,
+               }
+    return render(request, 'main/home.html', context)
+
+
+
+@login_required(login_url='login')
+def user_profile(request):
+    user_profile = User_Profile.objects.get(user=request.user)
+    context = {'user_profile':user_profile}
+    return render(request, 'main/user_profile.html', context)
 
 
 

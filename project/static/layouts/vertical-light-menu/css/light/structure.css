@@ -120,6 +120,16 @@ code {
   margin-top: 56px;
 }
 
+#content_home {
+  width: 50%;
+  flex-grow: 8;
+  margin-top: 20px;
+  margin-bottom: 0;
+  
+  -webkit-transition: 0.3s ease all;
+  transition: 0.3s ease all;
+}
+
 #content {
   width: 50%;
   flex-grow: 8;
@@ -150,8 +160,17 @@ code {
   box-shadow: 0 0 40px 0 rgba(94, 92, 154, 0.06);
 }
 
+.layout-top-spacing-add-new-contract {
+  margin-top: 28px;
+  direction: rtl;
+  width: 80%;
+  margin-right: 10%;
+  margin-left: 10%;
+}
+
 .layout-top-spacing {
   margin-top: 28px;
+  direction: rtl;
 }
 
 .layout-spacing {
@@ -162,6 +181,7 @@ code {
 margin-top: 50px;
   padding: 0 24px !important;
   min-height: calc(100vh - 112px) !important;
+  direction: rtl;
 }
 
 .widget.box .widget-header {
@@ -179,13 +199,20 @@ margin-top: 50px;
   font-weight: 600;
   margin: 0;
   padding: 16px 15px;
-  height: 600px;
+  /* height: 600px; */
 }
 
 .seperator-header {
   background: transparent;
   box-shadow: none;
   margin-bottom: 40px;
+  border-radius: 0;
+}
+
+.seperator-header-add-new-contract {
+  background: transparent;
+  box-shadow: none;
+  margin-bottom: 5px;
   border-radius: 0;
 }
 .seperator-header h4 {
@@ -199,6 +226,20 @@ margin-top: 50px;
   background: rgba(0, 150, 136, 0.26);
   color: #009688;
   font-weight: 500;
+}
+.seperator-header-add-new-contract h4 {
+  margin-bottom: 0;
+  line-height: 1.4;
+  padding: 5px 8px;
+  font-size: 15px;
+  border-radius: 4px;
+  letter-spacing: 1px;
+  display: inline-block;
+  background: #c19a2e83;
+  color: #0f100f;
+  font-weight:bold;
+  width: 30%;
+  font-family:Arial, Helvetica, sans-serif;
 }
 
 .widget .widget-header {
@@ -1151,7 +1192,7 @@ body .navbar .dark-mode, body:not(.dark) .navbar .dark-mode {
   content: "";
   position: absolute;
   background-color: rgba(255, 255, 255, 0.07);
-  background-color: #4361ee;
+  background-color: #c19b2e;
   width: 15px;
   height: 42px;
   width: 100%;
