@@ -160,12 +160,6 @@ class Contract_Detail(models.Model):
     first_party_assign = models.CharField(max_length=250, null=True, blank=True)
     sgnlassignmnt_actionFile = models.FileField(null=True, blank=True, upload_to='files')
 
-    # اشارة assign1
-    sgnlassign1_action_creator =models.CharField(max_length=250, null=True, blank=True)
-    sgnlassign1_action_date = models.DateTimeField(null=True, blank=True)
-    sgnlassign1_action = models.CharField(max_length=250, null=True, blank=True)
-    sgnlassign1_actionFile = models.FileField(null=True, blank=True, upload_to='files')
-
     # اشارة last_status
     sgnllast_status_action = models.CharField(max_length=250, null=True, blank=True, default='اصدار جديد')
     sgnllast_status_note = models.CharField(max_length=250, null=True, blank=True)
