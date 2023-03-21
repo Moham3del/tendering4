@@ -1276,6 +1276,10 @@ def contract_main_index(request):
     complete = Contract_Detail.objects.all().filter(sgnllast_status_action='مكتمل')
     complete_count = complete.count()
 
+    # حساب الجاري
+    inprogress = Contract_Detail.objects.all().filter(~Q(sgnllast_status_action='مكتمل'), ~Q(sgnllast_status_action='رفض'))
+    inprogress_count = inprogress.count()
+
 
 
     context = {
@@ -1296,6 +1300,7 @@ def contract_main_index(request):
         'asgn2_count':asgnmnt_count,
         'refuse_count':refuse_count,
         'complete_count':complete_count,
+        'inprogress_count':inprogress_count,
         'notification_count':notification_count,
 
     }
@@ -1319,6 +1324,10 @@ def contract_main_index_viewall(request):
     contract_report = Contract_Detail.objects.all()
     searchFilter = ContractFilter(request.GET, queryset=contract_report.order_by('id'))
     contract_report = searchFilter.qs
+    
+    # حساب الجاري
+    inprogress = Contract_Detail.objects.all().filter(~Q(sgnllast_status_action='مكتمل'), ~Q(sgnllast_status_action='رفض'))
+    inprogress_count = inprogress.count()
 
 
     context = {
@@ -1332,6 +1341,7 @@ def contract_main_index_viewall(request):
 
         'notification_count':notification_count,
         'complete_count':complete_count,
+        'inprogress_count':inprogress_count,
 
     }
     if request.user.is_staff:
@@ -1349,6 +1359,9 @@ def contract_sector_index_viewall(request):
     notification_count = notification.count()
     complete = Contract_Detail.objects.all().filter(sgnllast_status_action='مكتمل')
     complete_count = complete.filter(sector = user_profile.sector_name).count()
+    # حساب الجاري
+    inprogress = Contract_Detail.objects.all().filter(~Q(sgnllast_status_action='مكتمل'), ~Q(sgnllast_status_action='رفض'))
+    inprogress_count = inprogress.filter(sector = user_profile.sector_name).count()
 
 
     contract_report = Contract_Detail.objects.all().filter(sector = user_profile.sector_name)
@@ -1367,6 +1380,7 @@ def contract_sector_index_viewall(request):
 
         'notification_count':notification_count,
         'complete_count':complete_count,
+        'inprogress_count':inprogress_count,
 
     }
     if request.user.is_staff:
@@ -1384,6 +1398,9 @@ def contract_project_index_viewall(request):
     notification_count = notification.count()
     complete = Contract_Detail.objects.all().filter(sgnllast_status_action='مكتمل')
     complete_count = complete.filter(project = user_profile.project_name).count()
+    # حساب الجاري
+    inprogress = Contract_Detail.objects.all().filter(~Q(sgnllast_status_action='مكتمل'), ~Q(sgnllast_status_action='رفض'))
+    inprogress_count = inprogress.filter(project = user_profile.project_name).count()
 
 
     contract_report = Contract_Detail.objects.all().filter(project = user_profile.project_name)
@@ -1402,6 +1419,7 @@ def contract_project_index_viewall(request):
 
         'notification_count':notification_count,
         'complete_count':complete_count,
+        'inprogress_count':inprogress_count,
 
     }
     if request.user.is_staff:
@@ -1468,6 +1486,10 @@ def contract_sector_index(request):
     # حساب المكتمل
     complete = Contract_Detail.objects.all().filter(sgnllast_status_action='مكتمل')
     complete_count = complete.filter(sector = user_profile.sector_name).count()
+    
+    # حساب الجاري
+    inprogress = Contract_Detail.objects.all().filter(~Q(sgnllast_status_action='مكتمل'), ~Q(sgnllast_status_action='رفض'))
+    inprogress_count = inprogress.filter(sector = user_profile.sector_name).count()
 
 
 
@@ -1489,6 +1511,7 @@ def contract_sector_index(request):
         'asgn2_count':asgnmnt_count,
         'refuse_count':refuse_count,
         'complete_count':complete_count,
+        'inprogress_count':inprogress_count,
         'notification_count':notification_count,
 
     }
@@ -1555,6 +1578,10 @@ def contract_project_index(request):
     # حساب المكتمل
     complete = Contract_Detail.objects.all().filter(sgnllast_status_action='مكتمل')
     complete_count = complete.filter(project = user_profile.project_name).count()
+    
+    # حساب الجاري
+    inprogress = Contract_Detail.objects.all().filter(~Q(sgnllast_status_action='مكتمل'), ~Q(sgnllast_status_action='رفض'))
+    inprogress_count = inprogress.filter(project = user_profile.project_name).count()
 
 
 
@@ -1576,6 +1603,7 @@ def contract_project_index(request):
         'asgn2_count':asgnmnt_count,
         'refuse_count':refuse_count,
         'complete_count':complete_count,
+        'inprogress_count':inprogress_count,
         'notification_count':notification_count,
 
     }

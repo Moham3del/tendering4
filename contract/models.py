@@ -56,7 +56,6 @@ class Contract_Detail(models.Model):
         ('غير مطلوب', 'غير مطلوب'),
     ]
     # creator
-    extra_id = models.IntegerField(null=True, blank=True)
     contract_no = models.IntegerField(null=True, blank=True)
     creation_date = models.DateTimeField(auto_now_add=True, null=True, blank=True)
     creator = models.CharField(max_length=250, null=True, blank=True)
@@ -72,11 +71,11 @@ class Contract_Detail(models.Model):
     cost_istimation =  models.CharField(max_length=250, choices=cost_istimation, null=False, blank=False)
     secondParty_name = models.CharField(max_length=250, null=False, blank=False)
     price_analysis_status = models.CharField(max_length=250, choices=price_analysis_status, null=False, blank=False)
-    price_analysis = models.FileField(null=True, blank=False, upload_to='files')
+    price_analysis = models.FileField(null=True, blank=False, upload_to='files/%Y/%m/%d')
     # bank_account =  models.IntegerField(null=False, blank=False)
     iban =  models.IntegerField(null=False, blank=False)
     tax_number =  models.IntegerField(null=True, blank=True)
-    signature_authorization =  models.FileField(null=True, blank=False, upload_to='files')
+    signature_authorization =  models.FileField(null=True, blank=False, upload_to='files/%Y/%m/%d')
     delegated_nam = models.CharField(max_length=250, null=False, blank=False)
     delegated_title = models.CharField(max_length=250, null=False, blank=False)
     gov_id_no = models.CharField(max_length=250, null=False, blank=False)
@@ -85,14 +84,14 @@ class Contract_Detail(models.Model):
     email = models.EmailField(null=False, blank=False, max_length=50)
     postal_code = models.CharField(max_length=20, null=False, blank=False)
     address = models.CharField(max_length=250, null=False, blank=False)
-    commercial_register =  models.FileField(null=False, blank=False, upload_to='files')
+    commercial_register =  models.FileField(null=False, blank=False, upload_to='files/%Y/%m/%d')
     commercial_register_date =  models.DateField(null=False, blank=False, validators=[validate_rc])
     establishment_company = models.CharField(max_length=250,choices=establishment_company, null=False, blank=False)
-    association_contract =  models.FileField(null=True, blank=True, upload_to='files')
-    zakat_Income_certificate =  models.FileField(null=False, blank=False, upload_to='files')
-    sub_contractor_profile =  models.FileField(null=True, blank=True, upload_to='files')
-    project_original_contract_quantities_table_copy =  models.FileField(null=True, blank=True, upload_to='files')
-    contract_quantities_table =  models.FileField(null=False, blank=False, upload_to='files', validators=[FileExtensionValidator(['xlsx'])])
+    association_contract =  models.FileField(null=True, blank=True, upload_to='files/%Y/%m/%d')
+    zakat_Income_certificate =  models.FileField(null=False, blank=False, upload_to='files/%Y/%m/%d')
+    sub_contractor_profile =  models.FileField(null=True, blank=True, upload_to='files/%Y/%m/%d')
+    project_original_contract_quantities_table_copy =  models.FileField(null=True, blank=True, upload_to='files/%Y/%m/%d')
+    contract_quantities_table =  models.FileField(null=False, blank=False, upload_to='files/%Y/%m/%d', validators=[FileExtensionValidator(['xlsx'])])
     special_conditions =  models.TextField(null=False, blank=False)
     payment_terms =  models.TextField(null=False, blank=False)
     
@@ -111,7 +110,7 @@ class Contract_Detail(models.Model):
     sgnlcostEstimation_action_creator =models.CharField(max_length=250, null=True, blank=True)
     sgnlcostEstimation_action_date = models.DateTimeField(null=True, blank=True)
     sgnlcostEstimation_action = models.CharField(max_length=250, null=True, blank=True)
-    sgnlcostEstimation_actionFile = models.FileField(null=True, blank=True, upload_to='files')
+    sgnlcostEstimation_actionFile = models.FileField(null=True, blank=True, upload_to='files/%Y/%m/%d')
 
     # اشارة اعتماد المالية
     sgnlfinancial_action_creator =models.CharField(max_length=250, null=True, blank=True)
@@ -123,14 +122,14 @@ class Contract_Detail(models.Model):
     sgnlcopyContract_action_creator =models.CharField(max_length=250, null=True, blank=True)
     sgnlcopyContract_action_date = models.DateTimeField(null=True, blank=True)
     sgnlcopyContract_action = models.CharField(max_length=250, null=True, blank=True)
-    sgnlcopyContract_actionFile = models.FileField(null=True, blank=True, upload_to='files')
+    sgnlcopyContract_actionFile = models.FileField(null=True, blank=True, upload_to='files/%Y/%m/%d')
 
     # اشارة مراجع العقود
     sgnlcheckContract_action_creator =models.CharField(max_length=250, null=True, blank=True)
     sgnlcheckContract_action_date = models.DateTimeField(null=True, blank=True)
     sgnlcheckContract_action = models.CharField(max_length=250, null=True, blank=True)
     sgnlcheckContract_action_note = models.CharField(max_length=250, null=True, blank=True)
-    sgnlcheckContract_actionFile = models.FileField(null=True, blank=True, upload_to='files')
+    sgnlcheckContract_actionFile = models.FileField(null=True, blank=True, upload_to='files/%Y/%m/%d')
 
     # اشارة tcta
     sgnltcta_action_creator =models.CharField(max_length=250, null=True, blank=True)
@@ -159,7 +158,13 @@ class Contract_Detail(models.Model):
     check_contract_assign = models.CharField(max_length=250, null=True, blank=True)
     second_party_assign = models.CharField(max_length=250, null=True, blank=True)
     first_party_assign = models.CharField(max_length=250, null=True, blank=True)
-    sgnlassignmnt_actionFile = models.FileField(null=True, blank=True, upload_to='files')
+    sgnlassignmnt_actionFile = models.FileField(null=True, blank=True, upload_to='files/%Y/%m/%d')
+
+    # اشارة assign1
+    sgnlassign1_action_creator =models.CharField(max_length=250, null=True, blank=True)
+    sgnlassign1_action_date = models.DateTimeField(null=True, blank=True)
+    sgnlassign1_action = models.CharField(max_length=250, null=True, blank=True)
+    sgnlassign1_actionFile = models.FileField(null=True, blank=True, upload_to='files/%Y/%m/%d')
 
     # اشارة last_status
     sgnllast_status_action = models.CharField(max_length=250, null=True, blank=True, default='اصدار جديد')
@@ -205,7 +210,7 @@ class Actions(models.Model):
     action_creator = models.CharField(max_length=250, null=True, blank=True)
     action_notes = models.TextField(max_length=250, null=False, blank=False)
     action_date = models.DateTimeField(auto_now_add=True, null=True, blank=True)
-    action_file =  models.FileField(null=True, blank=True, upload_to='files')
+    action_file =  models.FileField(null=True, blank=True, upload_to='files/%Y/%m/%d')
     to = models.ForeignKey(User_Profile, on_delete=models.CASCADE, null=False, blank=False, related_name='Action_to')
     is_read = models.BooleanField(default=False)
     extra_id = models.IntegerField(null=True, blank=True)
@@ -310,7 +315,7 @@ class Cost_estimation_action(models.Model):
     action_creator =models.CharField(max_length=250)
     action_date = models.DateTimeField(null=True, blank=True, auto_now=True)
     action = models.CharField(max_length=250, null=False, blank=False, choices=action)
-    action_file =  models.FileField(null=False, blank=False, upload_to='files')
+    action_file =  models.FileField(null=False, blank=False, upload_to='files/%Y/%m/%d')
 
 
     def __str__(self):
@@ -398,7 +403,7 @@ class Copy_contract_action(models.Model):
     action_creator =models.CharField(max_length=250)
     action_date = models.DateTimeField(null=True, blank=True, auto_now=True)
     action = models.CharField(max_length=250, null=False, blank=False, choices=action)
-    action_file =  models.FileField(null=False, blank=False, upload_to='files', validators=[FileExtensionValidator(['pdf'])])
+    action_file =  models.FileField(null=False, blank=False, upload_to='files/%Y/%m/%d', validators=[FileExtensionValidator(['pdf'])])
 
 
     def __str__(self):
@@ -445,7 +450,7 @@ class Check_contract_action(models.Model):
     action_date = models.DateTimeField(null=True, blank=True, auto_now=True)
     action = models.CharField(max_length=250, null=False, blank=False, choices=action)
     action_note = models.CharField(max_length=250, null=True, blank=True)
-    action_file =  models.FileField(null=True, blank=True, upload_to='files')
+    action_file =  models.FileField(null=True, blank=True, upload_to='files/%Y/%m/%d')
 
 
     def __str__(self):
@@ -637,7 +642,7 @@ class Assignmnt_action(models.Model):
     check_contract_assign = models.CharField(max_length=250, null=False, blank=False, choices=action)
     second_party_assign = models.CharField(max_length=250, null=False, blank=False, choices=action)
     first_party_assign = models.CharField(max_length=250, null=False, blank=False, choices=action)
-    action_file =  models.FileField(null=False, blank=False, upload_to='files', validators=[FileExtensionValidator(['pdf'])])
+    action_file =  models.FileField(null=False, blank=False, upload_to='files/%Y/%m/%d', validators=[FileExtensionValidator(['pdf'])])
     contract_no = models.IntegerField(null=False, blank=False, unique=True)
 
 

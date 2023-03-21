@@ -1,6 +1,6 @@
 {% extends 'base.html' %} {% load static%} {% block content %}
 <div class="layout-px-spacing">
-    <div class="card">
+    <div class="card" style="background-color:#c19b2e">
         <div class="card-icon mb-4">
             <br>
             
@@ -46,6 +46,17 @@
                             </div>
                         </th>
 
+                        
+                        <th scope="col" style="text-align: center;">
+
+                            {% if inprogress_count == 0 %}
+                            {{inprogress_count | cut:'0'}}
+                            {%else%}
+                            {{inprogress_count}} عقود جارية
+                            {% endif %}
+
+                        </th>
+
                         <th scope="col" style="text-align: center;">
 
                                 {% if complete_count == 0 %}
@@ -55,6 +66,7 @@
                                 {% endif %}
 
                         </th>
+
 
 
 

@@ -3,7 +3,7 @@
 
 
 
-    <div class="card" style="margin-top: 2%;">
+    <div class="card" style="margin-top: 2%; background-color:#c19b2e">
         <div class="card-icon mb-4">
             <br>
             
@@ -47,6 +47,16 @@
                         
                                  <span style="font-size: 20px; color: crimson; font-weight: bolder">{{notification_count}} اشعارت</span>
                             </div>
+                        </th>
+
+                        <th scope="col" style="text-align: center;">
+
+                            {% if inprogress_count == 0 %}
+                            {{inprogress_count | cut:'0'}}
+                            {%else%}
+                            {{inprogress_count}} عقود جارية
+                            {% endif %}
+
                         </th>
 
                         <th style="text-align: center;">
