@@ -56,7 +56,7 @@ class Contract_Detail(models.Model):
         ('غير مطلوب', 'غير مطلوب'),
     ]
     # creator
-
+    extra_id = models.IntegerField(null=True, blank=True)
     contract_no = models.IntegerField(null=True, blank=True)
     creation_date = models.DateTimeField(auto_now_add=True, null=True, blank=True)
     creator = models.CharField(max_length=250, null=True, blank=True)
