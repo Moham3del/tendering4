@@ -145,7 +145,7 @@
                   
                 {% endif %}
 
-                <div data-bar="221239853286" data-pct="{{x.Days_till}}" class="cont-bar">
+                <div data-bar="221239853286" data-pct="{{x.Days_till|cut:'days'|cut:'day'|add:'يوم'}}" class="cont-bar">
 
                   <svg width="200" height="200" viewport="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg"
                     class="svg-bar">
