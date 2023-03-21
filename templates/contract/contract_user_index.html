@@ -1,0 +1,320 @@
+{% extends 'base.html' %} {% load static%} {% block content %}
+<div class="layout-px-spacing">
+
+
+
+    <div class="card" style="margin-top: 2%; background-color:#c19b2e">
+        <div class="card-icon mb-4">
+            <br>
+            
+
+
+            <table class="table table-striped mb-0">
+                <thead style="background-color: #002d72;">
+                    <tr>
+
+                        
+                        <th scope="col" style="text-align: center;">
+                            <div style="text-align: center;">
+                                {% if user_contract_permission.Sector_manager_action_2 == 'Yes' %}
+                                <a href="{% url 'contract_sector_index_viewall' %}">
+                                {% elif user_contract_permission.add_new_contract == 'Yes' %}
+                                <a href="{% url 'contract_project_index_viewall' %}">
+                                {% else %}
+                                <a href="{% url 'contract_main_index_viewall' %}">
+                                {% endif %}
+
+                                    <button style="border-radius: 5px; border-style: hidden; background-color: #c19b2e;">تغيير العرض</button>
+                                
+                                </a>   
+                            </div>
+                        </th>
+
+                        <th scope="col" style="text-align: center;">
+                            <div style="text-align: center;">
+                            
+                        
+                                <a href="{% url 'contract_notification' %}">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="feather feather-inbox">
+                                    <polyline points="22 12 16 12 14 15 10 15 8 12 2 12"></polyline>
+                                    <path
+                                        d="M5.45 5.11L2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z">
+                                    </path>
+                                </svg>
+                                </a>   
+                        
+                                 <span style="font-size: 20px; color: crimson; font-weight: bolder">{{notification_count}} اشعارت</span>
+                            </div>
+                        </th>
+
+                        <th scope="col" style="text-align: center;">
+
+                            {% if inprogress_count == 0 %}
+                            {{inprogress_count | cut:'0'}}
+                            {%else%}
+                            {{inprogress_count}} عقود جارية
+                            {% endif %}
+
+                        </th>
+
+                        <th style="text-align: center;">
+                            
+                            {% if complete_count == 0 %}
+                            {{complete_count | cut:'0'}}
+                            {%else%}
+                                {% if user_contract_permission.add_new_contract == 'Yes' %}
+                                    <a href="{% url 'contract_complete_report_special_project' %}">{{complete_count}} عقود مكتملة</a>
+                                {%else%}
+                                    <a href="{% url 'contract_complete_report_special_sector' %}">{{complete_count}} عقود مكتملة</a>
+                                {% endif %}
+                            {% endif %}
+                        </th>
+
+
+
+                        
+
+                    </tr>
+                </thead>
+                
+                
+                
+                
+            </table>
+
+
+        </div>
+    </div>
+
+    <div class="card" style="margin-top: 2%;">
+        <div class="card-icon mb-4">
+            <br>
+            
+
+
+            <table class="table table-striped mb-0">
+                <thead style="background-color: #002d72;">
+                    <tr>
+
+                        
+                        <th scope="col" style="text-align: center;">1<br>مدير القطاع</th>
+
+                        <th scope="col" style="text-align: center;">2<br>مراجعة البيانات</th>
+
+                        <th scope="col" style="text-align: center;">3<br>تقدبر التكاليف</th>
+
+                        <th scope="col" style="text-align: center;">4<br>مراجعة المالية</th> 
+
+
+                        
+
+                    </tr>
+                </thead>
+                
+                <tbody>
+                    <tr>
+                        
+                        <td style="text-align: center;">
+                            {% if sector_manager_count == 0 %}
+                            {{sector_manager_count | cut:'0'}}
+                            {%else%}
+                                {% if user_contract_permission.add_new_contract == 'Yes' %}
+                                    <a href="{% url 'contract_sector_report_special_project' %}">{{sector_manager_count}}</a>
+                                {%else%}
+                                    <a href="{% url 'contract_sector_report_special_sector' %}">{{sector_manager_count}}</a>
+                                {% endif %}
+                            {% endif %}
+                        </td>
+
+                        <td style="text-align: center;">
+                            {% if check_data_count == 0 %}
+                            {{check_data_count | cut:'0'}}
+                            {%else%}
+                                {% if user_contract_permission.add_new_contract == 'Yes' %}
+                                    <a href="{% url 'contract_chech_data_report_special_project' %}">{{check_data_count}}</a>
+                                {%else%}
+                                    <a href="{% url 'contract_chech_data_report_special_sector' %}">{{check_data_count}}</a>
+                                {% endif %}
+                            {% endif %}
+                        </td>
+
+                        <td style="text-align: center;">
+                            {% if cost_estimation_count == 0 %}
+                            {{cost_estimation_count | cut:'0'}}
+                            {%else%}
+                                {% if user_contract_permission.add_new_contract == 'Yes' %}
+                                    <a href="{% url 'contract_cost_estimation_report_special_project' %}">{{cost_estimation_count}}</a>
+                                {%else%}
+                                    <a href="{% url 'contract_cost_estimation_report_special_sector' %}">{{cost_estimation_count}}</a>
+                                {% endif %}
+                            {% endif %}
+                        </td>
+
+                        <td style="text-align: center;">
+                            {% if financial_count == 0 %}
+                            {{financial_count | cut:'0'}}
+                            {%else%}
+                                {% if user_contract_permission.add_new_contract == 'Yes' %}
+                                    <a href="{% url 'contract_financial_report_special_project' %}">{{financial_count}}</a>
+                                {%else%}
+                                    <a href="{% url 'contract_financial_report_special_sector' %}">{{financial_count}}</a>
+                                {% endif %}
+                            {% endif %}
+                        </td>
+                        
+                        
+
+                </tbody>
+                
+                
+                
+            </table>
+
+
+        </div>
+    </div>
+
+    <div class="card" style="margin-top: 2%;">
+        <div class="card-icon mb-4">
+            <br>
+
+
+            <table class="table table-striped mb-0">
+                <thead style="background-color: #002d72;">
+                    <tr>
+                        <th scope="col" style="text-align: center;">5<br>نسخ العقد</th> 
+
+                        <th scope="col" style="text-align: center;">6<br>مراجعة العقد</th> 
+
+                        <th scope="col" style="text-align: center;">7<br>اعتماد الإجراءات</th> 
+
+                                                                        
+                        <th scope="col" style="text-align: center;">8<br>اعتماد نائب الرئيس التنفيذي</th> 
+
+                        <th scope="col" style="text-align: center;">9<br>اعتماد الرئيس التنفيذي</th> 
+
+
+
+                    </tr>
+                </thead>
+                
+                <tbody>
+                    <tr>
+                        <td style="text-align: center;">
+                            {% if copy_contract_count == 0 %}
+                            {{copy_contract_count | cut:'0'}}
+                            {%else%}
+                                {% if user_contract_permission.add_new_contract == 'Yes' %}
+                                    <a href="{% url 'contract_copy_contract_report_special_project' %}">{{copy_contract_count}}</a>
+                                {%else%}
+                                    <a href="{% url 'contract_copy_contract_report_special_sector' %}">{{copy_contract_count}}</a>
+                                {% endif %}
+                            {% endif %}
+                        </td>
+
+                        <td style="text-align: center;">
+                            {% if check_contract_count == 0 %}
+                            {{check_contract_count | cut:'0'}}
+                            {%else%}
+                                {% if user_contract_permission.add_new_contract == 'Yes' %}
+                                    <a href="{% url 'contract_check_contract_report_special_project' %}">{{check_contract_count}}</a>
+                                {%else%}
+                                    <a href="{% url 'contract_check_contract_report_special_sector' %}">{{check_contract_count}}</a>
+                                {% endif %}
+                            {% endif %}
+                        </td>
+
+                        <td style="text-align: center;">
+                            {% if tcta_count == 0 %}
+                            {{tcta_count | cut:'0'}}
+                            {%else%}
+                                {% if user_contract_permission.add_new_contract == 'Yes' %}
+                                    <a href="{% url 'contract_tcta_report_special_project' %}">{{tcta_count}}</a>
+                                {%else%}
+                                    <a href="{% url 'contract_tcta_report_special_sector' %}">{{tcta_count}}</a>
+                                {% endif %}
+                            {% endif %}
+                        </td>
+
+
+                                                
+                        <td style="text-align: center;">
+                            {% if evp_count == 0 %}
+                            {{evp_count | cut:'0'}}
+                            {%else%}
+                                {% if user_contract_permission.add_new_contract == 'Yes' %}
+                                    <a href="{% url 'contract_evp_report_special_project' %}">{{evp_count}}</a>
+                                {%else%}
+                                    <a href="{% url 'contract_evp_report_special_sector' %}">{{evp_count}}</a>
+                                {% endif %}
+                            {% endif %}
+                        </td>
+
+                        <td style="text-align: center;">
+                            {% if ceo_count == 0 %}
+                            {{ceo_count | cut:'0'}}
+                            {%else%}
+                                {% if user_contract_permission.add_new_contract == 'Yes' %}
+                                    <a href="{% url 'contract_ceo_report_special_project' %}">{{ceo_count}}</a>
+                                {%else%}
+                                    <a href="{% url 'contract_ceo_report_special_sector' %}">{{ceo_count}}</a>
+                                {% endif %}
+                            {% endif %}
+                        </td>
+
+
+                </tbody>
+                
+            </table>
+
+        </div>
+    </div>
+
+    <div class="card" style="margin-top: 2%; width:25%; margin-left: auto; margin-right: auto;">
+        <div class="card-icon mb-4">
+            <br>
+
+
+            <table class="table table-striped mb-0">
+                <thead style="background-color: #002d72;">
+                    <tr>
+
+
+                        <th scope="col" style="text-align: center;">10<br>توقيعات</th> 
+
+                    </tr>
+                </thead>
+                
+                <tbody>
+                    <tr>
+
+
+
+                        <td style="text-align: center;">
+                            {% if asgn2_count == 0 %}
+                            {{asgn2_count | cut:'0'}}
+                            {%else%}
+                            {% if user_contract_permission.add_new_contract == 'Yes' %}
+                                <a href="{% url 'contract_asgnmnt_report_special_project' %}">{{asgn2_count}}</a>
+                            {%else%}
+                                <a href="{% url 'contract_asgnmnt_report_special_sector' %}">{{asgn2_count}}</a>
+                            {% endif %}
+                            {% endif %}
+                        </td>
+                        
+
+
+                </tbody>
+                
+                
+                
+            </table>
+
+        </div>
+    </div>
+
+</div>
+
+{% endblock content %}

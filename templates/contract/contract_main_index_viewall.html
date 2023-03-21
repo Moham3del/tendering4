@@ -1,0 +1,277 @@
+{% extends 'base.html' %} {% load static%} {% block content %}
+<div class="layout-px-spacing">
+    <div class="card" style="margin-top: 2%;  background-color:#c19b2e;">
+        <div class="card-icon mb-4">
+            <br>
+            
+
+
+            <table class="table table-striped mb-0">
+                <thead style="background-color: #002d72;">
+                    <tr>
+
+                        
+                        <th scope="col" style="text-align: center;">
+                            <div style="text-align: center;">
+                                {% if user_contract_permission.Sector_manager_action_2 == 'Yes' %}
+                                <a href="{% url 'contract_sector_index' %}">
+                                {% elif user_contract_permission.add_new_contract == 'Yes' %}
+                                <a href="{% url 'contract_project_index' %}">
+                                {% else %}
+                                <a href="{% url 'contract_main_index' %}">
+                                {% endif %}
+
+                                    <button style="border-radius: 5px; border-style: hidden; background-color: #c19b2e;">تغيير العرض</button>
+                                
+                                </a>   
+                            </div>
+                        </th>
+
+                        <th scope="col" style="text-align: center;">
+                            <div style="text-align: center;">
+                            
+                        
+                                <a href="{% url 'contract_notification' %}">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="feather feather-inbox">
+                                    <polyline points="22 12 16 12 14 15 10 15 8 12 2 12"></polyline>
+                                    <path
+                                        d="M5.45 5.11L2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z">
+                                    </path>
+                                </svg>
+                                </a>   
+                        
+                                 <span style="font-size: 20px; color: rgba(220, 20, 60, 0.945); font-weight: bolder">{{notification_count}} اشعارات</span>
+                            </div>
+                        </th>
+
+                                                
+                        <th scope="col" style="text-align: center;">
+
+                            {% if inprogress_count == 0 %}
+                            {{inprogress_count | cut:'0'}}
+                            {%else%}
+                            {{inprogress_count}} عقود جارية
+                            {% endif %}
+
+                    </th>
+
+                        <th scope="col" style="text-align: center;">
+
+                            {% if complete_count == 0 %}
+                            {{complete_count | cut:'0'}}
+                            {%else%}
+                                {% if user_contract_permission.add_new_contract == 'Yes' %}
+                                    <a href="{% url 'contract_complete_report_special_project' %}">{{complete_count}} عقود مكتملة</a>
+                                {% elif user_contract_permission.Sector_manager_action_2 == 'Yes' %}
+                                    <a href="{% url 'contract_complete_report_special_sector' %}">{{complete_count}} عقود مكتملة</a>
+                                {% else %}
+                                    <a href="{% url 'contract_complete_report' %}">{{complete_count}} عقود مكتملة</a>
+                                {% endif %}
+                            {% endif %}
+
+                    </th>
+
+
+
+                        
+
+                    </tr>
+                </thead>
+                
+                
+                
+                
+            </table>
+
+
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-icon mb-4">
+            <br>
+            
+            
+            <form method="GET">
+                <table class="table table-striped mb-0">
+                    <thead style="background-color: #002d72;">
+                        <tr>
+    
+                            
+                            <th scope="col" style="text-align: center;">رقم الطلب</th>
+                            <th scope="col" style="text-align: center;">الطرف الثاني</th>
+                            <th scope="col" style="text-align: center;">نوع الأعمال</th>
+                            <th scope="col" style="text-align: center;">القطاع</th>
+                            
+    
+                        </tr>
+                    </thead>
+                    
+                    <tbody>
+                        <tr>
+                            
+                            <td style="text-align: center;">{{myFilter.form.id}}</td>
+                            <td style="text-align: center;">{{myFilter.form.secondParty_name}}</td>
+                            <td style="text-align: center;">{{myFilter.form.works_type}}</td>
+                            <td style="text-align: center;">{{myFilter.form.sector}}</td>
+                            
+                        </tr>
+                    </tbody>
+    
+                    
+                    
+                    
+                </table>
+                <table class="table table-striped mb-0">
+                    <thead style="background-color: #002d72;">
+                        <tr>
+                            <th scope="col" style="text-align: center;">المشروع</th>
+                            <th scope="col" style="text-align: center;">الحالة</th>   
+                            <th scope="col" style="text-align: center;">رقم العقد</th>
+                            
+    
+                        </tr>
+                    </thead>
+                    
+                    <tbody>
+                        <tr>
+                            <td style="text-align: center;">{{myFilter.form.creator}}</td>
+                            <td style="text-align: center;">{{myFilter.form.sgnllast_status_action}}</td>
+                            <td style="text-align: center;">{{myFilter.form.contract_no}}</td>
+                        </tr>
+                    </tbody>
+    
+                    
+                    
+                    
+                </table>
+                <br>
+                <input type="submit" name="txt" class="mt-1 btn btn-add-new-contract" value="بحث" >
+            </form>
+
+        </div>
+    </div>
+    <div id="form_sizing" class="col-lg-12" style="width: 100%;">
+        <div class="seperator-header-add-new-contract" style="width: 100%; text-align: center;">
+            <br>
+            <h4 class="">جميع العقود</h4>
+        </div>
+    </div>
+    <div class="card" style="margin-top: 1%;">
+        <div class="card-icon mb-4">
+            <br>
+            
+
+
+            <table class="table table-striped mb-0">
+                <thead style="background-color: #002d72;">
+                    <tr>
+
+                        
+                        <th scope="col" style="text-align: center;">رقم الطلب</th>
+
+                        <th scope="col" style="text-align: center;">تاريخ الطلب</th>
+
+                        <th scope="col" style="text-align: center;">المشروع</th>
+
+                        <th scope="col" style="text-align: center;">القطاع</th> 
+
+                        <th scope="col" style="text-align: center;">الطرف الثاني</th> 
+
+                        <th scope="col" style="text-align: center;">نوع الأعمال</th> 
+
+                        <th scope="col" style="text-align: center;">مدة الطلب</th> 
+
+                        <th scope="col" style="text-align: center;">الحالة</th> 
+
+
+                        
+
+                    </tr>
+                </thead>
+                {% for a in contract_report %}
+                <tbody>
+                    <tr>
+                        
+                        <td style="text-align: center;">{{a.id}}</td>
+                        <td style="text-align: center;">{{a.creation_date}}</td>
+                        <td style="text-align: center;">{{a.project}}</td>
+                        <td style="text-align: center;">{{a.sector}}</td>
+                        <td style="text-align: center;">{{a.secondParty_name}}</td>
+                        <td style="text-align: center;">{{a.works_type}}</td>
+                        {% if a.sgnllast_status_action == 'مكتمل'%}
+                        <td style="text-align: center;">{{a.Contract_duration}}</td>
+                        {% else %}
+                        <td style="text-align: center;">{{a.Request_duration}}</td>
+                        {% endif %}
+                        <td style="text-align: center;">
+
+                             
+
+                            {% if user_contract_permission.add_new_contract == 'Yes'%}
+                                <a href="{% url 'sector_manager_action' a.id %}">{{a.sgnllast_status_action}}</a>
+                            {% endif %}
+
+                            {% if user_contract_permission.Sector_manager_action_2 == 'Yes' %}
+                                <a href="{% url 'sector_manager_action' a.id %}">{{a.sgnllast_status_action}}</a>
+                            {% endif %}
+
+                            {% if user_contract_permission.Check_data_action_3 == 'Yes' %}
+                                <a href="{% url 'check_data_action' a.id %}">{{a.sgnllast_status_action}}</a>
+                            {% endif %}
+
+                            {% if user_contract_permission.Cost_estimation_action_4 == 'Yes' %}
+                                <a href="{% url 'cost_estimation_action' a.id %}">{{a.sgnllast_status_action}}</a>
+                            {% endif %}
+
+                            {% if user_contract_permission.Financial_action_5 == 'Yes' %}
+                                <a href="{% url 'financial_action' a.id %}">{{a.sgnllast_status_action}}</a>
+                            {% endif %}
+
+                            {% if user_contract_permission.Copy_contract_action_6 == 'Yes' and a.sgnllast_status_action != 'توقيعات'%}
+                                <a href="{% url 'copy_contract_action' a.id %}">{{a.sgnllast_status_action}}</a>
+                            {% endif %} 
+                            
+                            {% if user_contract_permission.Check_contract_action_7 == 'Yes' %}
+                                <a href="{% url 'check_contract_action' a.id %}">{{a.sgnllast_status_action}}</a>
+                            {% endif %}
+
+                            {% if user_contract_permission.TCTA_action_8 == 'Yes' %}
+                                <a href="{% url 'tcta_action' a.id %}">{{a.sgnllast_status_action}}</a>
+                            {% endif %}
+
+                            {% if user_contract_permission.EVP_action_9 == 'Yes' %}
+                                <a href="{% url 'evp_action' a.id %}">{{a.sgnllast_status_action}}</a>
+                            {% endif %}
+
+                            {% if user_contract_permission.CEO_action_10 == 'Yes'%}
+                                <a href="{% url 'ceo_action' a.id %}">{{a.sgnllast_status_action}}</a>
+                            {% endif %}
+
+                            {% if user_contract_permission.AssignAttach2_action_11 == 'Yes' and a.sgnllast_status_action == 'توقيعات'%}
+                                <a href="{% url 'assignmnt_action' a.id %}">{{a.sgnllast_status_action}}</a>
+                            {% endif %}
+                            
+
+
+
+                            
+                            
+                        </td>
+
+                </tbody>
+                {% endfor %}
+                
+                
+                
+            </table>
+
+
+        </div>
+    </div>
+
+</div>
+
+{% endblock content %}
