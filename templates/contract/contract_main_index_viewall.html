@@ -201,7 +201,11 @@
                         <td style="text-align: center;">{{a.sector}}</td>
                         <td style="text-align: center;">{{a.secondParty_name}}</td>
                         <td style="text-align: center;">{{a.works_type}}</td>
+                        {% if a.sgnllast_status_action == 'مكتمل'%}
+                        <td style="text-align: center;">{{a.Contract_duration}}</td>
+                        {% else %}
                         <td style="text-align: center;">{{a.Request_duration}}</td>
+                        {% endif %}
                         <td style="text-align: center;">
 
                              
