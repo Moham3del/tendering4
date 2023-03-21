@@ -8,51 +8,53 @@
 <div class="layout-px-spacing">
   <div class="middle-content container-xxl p-0">
 
+      <div class="row layout-top-spacing">
 
-          <div class="card">
-            <div class="card-icon mb-4">
-                <br>
-                
-                
-            <form method="GET">
-                <table class="table table-striped mb-0">
-                    <thead style="background-color: #002d72;">
-                        <tr>
-    
-                            
-                            <th scope="col" style="text-align: center;">المالك</th>
-                            <th scope="col" style="text-align: center;">النشاط الأساسي</th>
-    
-                        </tr>
-                    </thead>
+          <a href="{% url 'tender_details' %}">
+              الرجوع الى جميع المنافسات
+              <div class="ripple-container"></div>
+          </a>
+          <div class="s007">
+              <form method="GET">
+                <div class="inner-form">
+                  
+                  <div class="advance-search">
                     
-                    <tbody>
-                        <tr>
-                            
-                            <td style="text-align: center;">{{myFilter.form.management}}</td>
-                            <td style="text-align: center;">{{myFilter.form.owner}}</td>
-                        </tr>
-                    </tbody>
-    
+                    <div class="row">
+                      <div class="input-field">
+                        <div class="input-select">
+                          النشاط الأساسي {{myFilter.form.management}}
+                        </div>
+                      </div>
+                      <div class="input-field">
+                        <div class="input-select">
+                          المالك {{myFilter.form.owner}}
+                        </div>
+                      </div>
+
+                      <div class="input-field">
+                          <button class="btn-search">Search</button>
+                        </div>
+                    
+                      
+                      
+                      
+                      
+                    </div>
                     
                     
-                    
-                </table>
-                <br>
-                <input type="submit" name="txt" class="mt-1 btn btn-add-new-contract" value="بحث" >
-            </form>
-    
-            </div>
-        </div>
+                  </div>
+                </div>
+              </form>
+          </div>
           <br>
           <h1>
-              
+
               <div class="tabs">
                   <div class="tabby-tab">
                       <input type="radio" id="tab-1" name="tabby-tabs" checked>
                       <label for="tab-1">تقرير المناقصات الجارية ( {{detail_count}} )</label>
                       <div class="tabby-content">
-                      <form method="POST" id="myfrm">
                           <table class="table table-striped mb-0">
                               <thead style="background-color: #002d72;">
                                   <tr>
@@ -66,7 +68,7 @@
                               <tbody>
                                   <tr>
                                       <td>{{x.no}} ـ {{x.title}}</td>
-                                      <td>  {{x.submit_date}} ـ ـ ـ ({{x.Days_till|cut:'days'|add:'يوم'}})</td>
+                                      <td>  {{x.submit_date}} ـ ـ ـ ({{x.Days_till}})</td>
                                       <td>{{x.owner}}</td>
                                       <td>{{x.management}}</td> 
                                       <td></td>
@@ -80,24 +82,12 @@
                               </tbody>
                               {% endfor %}
                           </table>
-                      </form>
-                      <br>
-                      <button id="print-button"  class="mt-1 btn btn-add-new-contract">طباعة التقرير</button>
-
                       </div>
-                    
-
                   </div>
-              
-              
           </h1>
-
       </div>
 
   </div>
 </div>
-
-            
-<script src="{% static 'printform/contract.js' %}"></script>
 
 {% endblock content %}

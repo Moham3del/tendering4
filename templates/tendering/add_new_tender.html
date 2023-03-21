@@ -10,7 +10,7 @@
     <div class="middle-content container-xxl p-0">
 
        <div class="row layout-top-spacing">
-          <form id="detailsForm" autocomplete="off"  action="" method="POST">
+          <form id="detailsForm" autocomplete="off"  action="" method="POST" enctype="multipart/form-data">
                {% csrf_token %}
                    <div class="col-12">
                        <div class="clearfix"></div>
@@ -33,6 +33,17 @@
                                        
                                                <div class="col-md-6 col-sm-12 col-xs-12">
                                                    <ul class="list-group form-details-list">
+                                                       
+                                                       <li class="list-group-item">
+                                                           <div class="row">
+                                                           <div class="col-4 etd-item-title">
+                                                               author photo
+                                                           </div>
+                                                           <div class="col-8 etd-item-info">
+                                                               {{form.photo_author}}
+                                                           </div>
+                                                           </div>
+                                                       </li>
                                                        
                                                        <li class="list-group-item">
                                                            <div class="row">
@@ -72,7 +83,7 @@
                                                                تاريخ البدء
                                                            </div>
                                                            <div class="col-8 etd-item-info">
-                                                               {{form.publication_date}}
+                                                               {{form.starting_date}}
 
                                                            </div>
                                                            </div>

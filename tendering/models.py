@@ -49,14 +49,14 @@ class T_detail(models.Model):
     ]
 
 
-    no = models.IntegerField(null=False, blank=False, unique=True)
+    no = models.IntegerField(null=False, blank=False)
     
     local_content_percentage = models.IntegerField(null=True, blank=True)
     title = models.CharField(max_length=250)
     submitting_offers_method = models.CharField(max_length=250, null=True, blank=True)
     photo_tender = models.ImageField(upload_to='photos', null=True, blank=True)
-    photo_author = models.ImageField(upload_to='photos', null=True, blank=True)
-    rfp_no = models.CharField(max_length=50, null=True, blank=True)
+    photo_author = models.ImageField(upload_to='photos', null=True, blank=False)
+    rfp_no = models.IntegerField(null=True, blank=True)
     starting_date = models.DateField(null=True, blank=True)
     participation_confirmation_letter_due_date = models.DateField(null=True, blank=True)
     receiving_inquiries_Deadline = models.DateField(null=True, blank=True)

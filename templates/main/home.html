@@ -83,7 +83,7 @@
                                                     <div class="card-icon mb-4">
                                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-dollar-sign"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
                                                     </div>
-                                                    <h5 class="card-title mb-0"> نظام إدارة المناقصات  <br>TMS</h5>
+                                                    <h5 class="card-title mb-0"> TENDERING </h5>
                                                 </div>
                                             </div>
                                         </a>
@@ -94,18 +94,9 @@
                                 
                                 {% if user_contract_permission.contract_app == 'Yes' %}
                                     <div class="col-xxl-2 col-xl-3 col-lg-3 mb-lg-0 col-md-6 mb-3">
-                                            {% if user_contract_permission.main_index == 'Yes' %}
-                                                <a href="{% url 'contract_main_index' %}">
-                                            
-                                            {% endif %}
- 
-                                            {% if user_contract_permission.project_index == 'Yes' %}
-                                                <a href="{% url 'contract_project_index' %}">
-                                            {% endif %}
- 
-                                            {% if user_contract_permission.sector_index == 'Yes' %}
-                                                <a href="{% url 'contract_sector_index' %}">
-                                            {% endif %}
+
+                                            <a href="{% url 'contract_main_index' %}">
+
                                                 <div class="card">
                                                     <div class="card-body">
                                                         <div class="card-icon mb-4">
@@ -115,9 +106,7 @@
                                                                 <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
                                                             </svg>
                                                         </div>
-                                                        <h5 class="card-title mb-0">نظام إدارة العقود <br>CMS
-                                                            
-                                                        </h5>
+                                                        <h5 class="card-title mb-0">CONTRACTS </h5>
                                                     </div>
                                                 </div>
                                             </a>
@@ -143,7 +132,7 @@
                                     <line x1="12" y1="22.08" x2="12" y2="12"></line>
                                 </svg>
                                                 </div>
-                                                <h5 class="card-title mb-0">الشئون الفنية <br>TA</h5>
+                                                <h5 class="card-title mb-0">TECHNICAL AFFAIRS</h5>
                                             </div>
                                         </div>
                                     </div>

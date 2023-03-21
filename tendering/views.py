@@ -73,7 +73,7 @@ def add_new_tender(request):
 
     form = T_detail_Form()
     if request.method == 'POST':
-        form = T_detail_Form(request.POST)
+        form = T_detail_Form(request.POST, request.FILES)
         if form.is_valid():
             form.save()
             return redirect('tender_details')

@@ -10,11 +10,11 @@
 
         <div class="row layout-top-spacing">
             <div class="col-xl-9 col-lg-12 col-md-12 col-sm-12 col-12 layout-spacing">
-
+                {% if user_profile.group1 == 'tendering0' %}
                 
-                <h1>{{user_profile.user}}</h1>
-                <h1>{{user_profile.sector_name}}</h1>
-
+                <h1>{{request.user}}</h1>
+                <h1>{{user_profile.group1}}</h1>
+                {% endif %}
             </div>
 
         </div>

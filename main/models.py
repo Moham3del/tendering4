@@ -20,15 +20,76 @@ class User_Profile(models.Model):
     sector_name = models.CharField(max_length=100, null=True, blank=True)
 
     def __str__(self):
-        return str(self.project_name)
+        return str(self.user)
     class Meta:
         verbose_name="profile"
-        ordering = ['project_name']
+        ordering = ['user']
 
 @receiver(post_save, sender=User)
 def creat_level(sender, instance, created, **kwargs):
     if created:
         User_Profile.objects.create(user=instance)
+
+
+
+class L_1(models.Model):
+    name = models.CharField(max_length=250)
+    def __str__(self):
+        return self.name
+    class Meta:
+        verbose_name="L_1"
+
+
+class L_2(models.Model):
+    name = models.CharField(max_length=250)
+    def __str__(self):
+        return self.name
+    class Meta:
+        verbose_name="L_2"
+
+
+class L_3(models.Model):
+    name = models.CharField(max_length=250)
+    def __str__(self):
+        return self.name
+    class Meta:
+        verbose_name="L_3"
+
+
+class L_4(models.Model):
+    name = models.CharField(max_length=250)
+    def __str__(self):
+        return self.name
+    class Meta:
+        verbose_name="L_4"
+
+
+class L_5(models.Model):
+    name = models.CharField(max_length=250)
+    def __str__(self):
+        return self.name
+    class Meta:
+        verbose_name="L_5"
+
+
+class User_Level(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    l_1 = models.ForeignKey(L_1, on_delete=models.PROTECT, null=True, blank=True)
+    l_2 = models.ForeignKey(L_2, on_delete=models.PROTECT, null=True, blank=True)
+    l_3 = models.ForeignKey(L_3, on_delete=models.PROTECT, null=True, blank=True)
+    l_4 = models.ForeignKey(L_4, on_delete=models.PROTECT, null=True, blank=True)
+    l_5 = models.ForeignKey(L_5, on_delete=models.PROTECT, null=True, blank=True)
+
+    def __str__(self):
+        return str(self.user)
+    class Meta:
+        verbose_name="User_Level"
+
+
+@receiver(post_save, sender=User)
+def creat_level(sender, instance, created, **kwargs):
+    if created:
+        User_Level.objects.create(user=instance)
 
 
 class User_ContractPermission(models.Model):
@@ -40,20 +101,18 @@ class User_ContractPermission(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     contract_app = models.CharField(max_length=250, choices=choice, null=True, blank=True)
     add_new_contract = models.CharField(max_length=250, choices=choice, null=True, blank=True)
-    Sector_manager_action_2 = models.CharField(max_length=250, choices=choice, null=True, blank=True)
-    Check_data_action_3 = models.CharField(max_length=250, choices=choice, null=True, blank=True)
-    Cost_estimation_action_4 = models.CharField(max_length=250, choices=choice, null=True, blank=True)
-    Financial_action_5 = models.CharField(max_length=250, choices=choice, null=True, blank=True)
-    Copy_contract_action_6 = models.CharField(max_length=250, choices=choice, null=True, blank=True)
-    Check_contract_action_7 = models.CharField(max_length=250, choices=choice, null=True, blank=True)
-    TCTA_action_8 = models.CharField(max_length=250, choices=choice, null=True, blank=True)
-    EVP_action_9 = models.CharField(max_length=250, choices=choice, null=True, blank=True)
-    CEO_action_10 = models.CharField(max_length=250, choices=choice, null=True, blank=True)
-    AssignAttach2_action_11 = models.CharField(max_length=250, choices=choice, null=True, blank=True)
-    AssignAttach1_action_12 = models.CharField(max_length=250, choices=choice, null=True, blank=True)
-    project_index = models.CharField(max_length=250, choices=choice, null=True, blank=True)
-    sector_index = models.CharField(max_length=250, choices=choice, null=True, blank=True)
-    main_index = models.CharField(max_length=250, choices=choice, null=True, blank=True)
+    update_contract_step_1 = models.CharField(max_length=250, choices=choice, null=True, blank=True)
+    check_contract_step_2 = models.CharField(max_length=250, choices=choice, null=True, blank=True)
+    cs_check_contract_step_3 = models.CharField(max_length=250, choices=choice, null=True, blank=True)
+    tcta_check_contract_step_4 = models.CharField(max_length=250, choices=choice, null=True, blank=True)
+    evp_check_contract_step_5 = models.CharField(max_length=250, choices=choice, null=True, blank=True)
+    ceo_check_contract_step_6 = models.CharField(max_length=250, choices=choice, null=True, blank=True)
+    print_contract_step_7 = models.CharField(max_length=250, choices=choice, null=True, blank=True)
+    cs_check_contract_step_8 = models.CharField(max_length=250, choices=choice, null=True, blank=True)
+    final_preview_contract_step_9 = models.CharField(max_length=250, choices=choice, null=True, blank=True)
+    final_assignment_contract_step_10 = models.CharField(max_length=250, choices=choice, null=True, blank=True)
+    contract_detail = models.CharField(max_length=250, choices=choice, null=True, blank=True)
+    contract_report = models.CharField(max_length=250, choices=choice, null=True, blank=True)
 
     def __str__(self):
         return str(self.user)

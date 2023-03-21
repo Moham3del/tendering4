@@ -485,7 +485,7 @@ body.dark label {
   font-size: 15px;
   color: #888ea8;
   letter-spacing: 1px;
-  /* display: inline-block; */
+  display: inline-block;
   margin-bottom: 0.5rem;
 }
 

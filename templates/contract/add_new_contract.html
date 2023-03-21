@@ -1,4 +1,4 @@
-{% extends 'base.html' %} {% load static%} {% block content %} 
+{% extends 'base.html' %} {% load static%} {% block content %}
 
 <form method="POST" enctype="multipart/form-data">
     {% csrf_token %}
@@ -41,39 +41,31 @@
                     <div class="widget-content widget-content-area">
 
                         <div class="form-group-add-new-contract row  mb-4">
-                            <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm"
-                            style="width: 40%; border-style: dashed; border-width: 1px; border-radius: 5px;"
-                            >جهة اصدار
+                            <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm" 
+                            style="width: 40%; border-style: dashed; border-width: 1px; border-radius: 5px;">جهة اصدار
                                 الطلب</label>
-                            <div class="col-sm-10-add-new-contract">
-                                <input type="text" class="form-control form-control-sm" id="colFormLabelSm"
-                                style="font-size: 20px; color:rgb(110, 111, 114);" disabled="true"
-                                value="{{user_profile.sector_name}}" {{form.sector}}
+                            <div class="col-sm-10-add-new-contract" >
+                                <input type="text" style="font-size: 20px; color:rgb(110, 111, 114);" disabled="true" class="form-control form-control-sm" id="colFormLabelSm" value="{{user_profile.sector_name}}"
+                                {{form.sector}}
                             </div>
                         </div>
 
                         <div class="form-group-add-new-contract row  mb-4">
-                            <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm"
-                            style="width: 40%; border-style: dashed; border-width: 1px; border-radius: 5px;"
-                            >اسم
+                            <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm" style="width: 40%; border-style: dashed; border-width: 1px; border-radius: 5px;">اسم
                                 المشروع</label>
-                            <div class="col-sm-10-add-new-contract">
-                                <input type="text" class="form-control form-control-sm" id="colFormLabelSm"
-                                style="font-size: 20px; color:rgb(110, 111, 114);" disabled="true"
-                                value="{{user_profile.project_name}}" {{form.project}}
+                            <div class="col-sm-10-add-new-contract" >
+                                <input type="text" style="font-size: 20px; color:rgb(110, 111, 114);" disabled="true" class="form-control form-control-sm" id="colFormLabelSm" value="{{user_profile.project_name}}"
+                                {{form.project}}
                             </div>
                         </div>
 
                         <div class="form-group-add-new-contract row  mb-4">
-                            <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm"
-                            style="width: 40%; border-style: dashed; border-width: 1px; border-radius: 5px;"
-                            >رقم
+                            <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm" style="width: 40%; border-style: dashed; border-width: 1px; border-radius: 5px;">رقم
                                 المشروع</label>
-                            <div class="col-sm-10-add-new-contract">
-                                <input type="text" class="form-control form-control-sm" id="colFormLabelSm"
-                                style="font-size: 20px; color:rgb(110, 111, 114);" disabled="true"
-                                value="{{user_profile.project_number}}" {{form.creator}}
-                            </div>
+                                <div class="col-sm-10-add-new-contract" >
+                                    <input type="text" style="font-size: 20px; color:rgb(110, 111, 114);" disabled="true" class="form-control form-control-sm" id="colFormLabelSm" value="{{request.user}}"
+                                    {{form.creator}}
+                                </div>
                         </div>
 
 
@@ -97,9 +89,8 @@
                     <div class="widget-content widget-content-area">
 
                         <div class="form-group-add-new-contract row  mb-4">
-                            <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm"
-                            style="width: 40%; border-style: dashed; border-width: 1px; border-radius: 5px;"
-                            >نوع الأعمال</label>
+                            <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm" style="width: 40%; border-style: dashed; border-width: 1px; border-radius: 5px;">نوع
+                                الأعمال</label>
                             <div class="col-sm-10-add-new-contract">
                                 <input type="text" class="form-control form-control-sm" id="colFormLabelSm"
                                     placeholder="نوع الأعمال" {{form.works_type}}
@@ -107,72 +98,44 @@
                         </div>
 
                         <div class="form-group-add-new-contract row  mb-4">
-                            <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm"
-                            style="width: 40%; border-style: dashed; border-width: 1px; border-radius: 5px;"
-                            >نوع
+                            <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm" style="width: 40%; border-style: dashed; border-width: 1px; border-radius: 5px;">نوع
                                 العقد</label>
                             <div class="col-sm-10-add-new-contract">
                                 <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm" 
                                 style="width: 100%; border-style:solid; border-width: 1px; border-radius: 5px; border-color: darkgray; padding-right: 2%;">
                                 {{form.contract_type}}
+                            </label>
+                                
                             </div>
                         </div>
 
                         <div class="form-group-add-new-contract row  mb-4">
-                            <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm"
-                            style="width: 40%; border-style: dashed; border-width: 1px; border-radius: 5px;"
-                            >قيمة العقد (بالريال السعودي)</label>
+                            <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm" style="width: 40%; border-style: dashed; border-width: 1px; border-radius: 5px;">قيمة
+                                العقد</label>
                             <div class="col-sm-10-add-new-contract">
                                 <input type="text" class="form-control form-control-sm" id="colFormLabelSm"
-                                placeholder="قيمة العقد (بالريال السعودي)" {{form.contract_value}} 
+                                    placeholder="قيمة العقد" {{form.contract_value}}
                             </div>
                         </div>
 
                         <div class="form-group-add-new-contract row  mb-4">
-                            <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm"
-                            style="width: 40%; border-style: dashed; border-width: 1px; border-radius: 5px;"
-                            >مدة تنفيذ العقد (باليوم)</label>
+                            <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm" style="width: 40%; border-style: dashed; border-width: 1px; border-radius: 5px;">مدة تنفيذ
+                                العقد</label>
                             <div class="col-sm-10-add-new-contract">
                                 <input type="text" class="form-control form-control-sm" id="colFormLabelSm"
-                                    placeholder="مدة تنفيذ العقد (باليوم)" {{form.contract_duration}}
+                                    placeholder="مدة تنفيذ العقد" {{form.contract_duration}}
                             </div>
                         </div>
 
                         <div class="form-group-add-new-contract row  mb-4">
-                            <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm"
-                            style="width: 40%; border-style: dashed; border-width: 1px; border-radius: 5px;"
-                            >قسم تقدير التكاليف
+                            <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm" style="width: 40%; border-style: dashed; border-width: 1px; border-radius: 5px;">قسم تقدير التكاليف
                                 </label>
                             <div class="col-sm-10-add-new-contract">
                                 <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm" 
                                 style="width: 100%; border-style:solid; border-width: 1px; border-radius: 5px; border-color: darkgray; padding-right: 2%;">
                                 {{form.cost_istimation}}
-                            </div>
-                        </div>
-
-                        <div class="form-group-add-new-contract row  mb-4">
-                            <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm"
-                            style="width: 40%; border-style: dashed; border-width: 1px; border-radius: 5px;"
-                            >حالة تحليل السعر
-                                </label>
-                            <div class="col-sm-10-add-new-contract">
-                                <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm" 
-                                style="width: 100%; border-style:solid; border-width: 1px; border-radius: 5px; border-color: darkgray; padding-right: 2%;">
-                                {{form.price_analysis_status}}
-                            </div>
-                        </div>
-
-                        
-                        <div class="form-group-add-new-contract row  mb-4">
-                            <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm"
-                            style="width: 40%; border-style: dashed; border-width: 1px; border-radius: 5px;"
-                            >تحليل السعر
-                                
-
                             </label>
-                            <div class="col-sm-10-add-new-contract">
-                                <input type="file" class="form-control form-control-sm" id="colFormLabelSm"
-                                    placeholder="شهادة الزكاة والدخل للمقاول من الباطن (سارية المفعول)" {{form.price_analysis}}
+                                
                             </div>
                         </div>
 
@@ -197,19 +160,24 @@
                     <div class="widget-content widget-content-area">
 
                         <div class="form-group-add-new-contract row  mb-4">
-                            <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm"
-                            style="width: 40%; border-style: dashed; border-width: 1px; border-radius: 5px;"
-                            >الطرف الثاني</label>
+                            <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm" style="width: 40%; border-style: dashed; border-width: 1px; border-radius: 5px;">اسم</label>
                             <div class="col-sm-10-add-new-contract">
                                 <input type="text" class="form-control form-control-sm" id="colFormLabelSm"
-                                    placeholder="اسم الطرف الثاني" {{form.secondParty_name}}
+                                    placeholder="اسم" {{form.name}}
                             </div>
                         </div>
 
                         <div class="form-group-add-new-contract row  mb-4">
-                            <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm"
-                            style="width: 40%; border-style: dashed; border-width: 1px; border-radius: 5px;"
-                            >رقم
+                            <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm" style="width: 40%; border-style: dashed; border-width: 1px; border-radius: 5px;">رقم الحساب
+                                البنكي</label>
+                            <div class="col-sm-10-add-new-contract">
+                                <input type="text" class="form-control form-control-sm" id="colFormLabelSm"
+                                    placeholder="رقم الحساب البنكي" {{form.bank_account}}
+                            </div>
+                        </div>
+
+                        <div class="form-group-add-new-contract row  mb-4">
+                            <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm" style="width: 40%; border-style: dashed; border-width: 1px; border-radius: 5px;">رقم
                                 الأيبان</label>
                             <div class="col-sm-10-add-new-contract">
                                 <input type="text" class="form-control form-control-sm" id="colFormLabelSm"
@@ -218,9 +186,7 @@
                         </div>
 
                         <div class="form-group-add-new-contract row  mb-4">
-                            <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm"
-                            style="width: 40%; border-style: dashed; border-width: 1px; border-radius: 5px;"
-                            >الرقم
+                            <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm" style="width: 40%; border-style: dashed; border-width: 1px; border-radius: 5px;">الرقم
                                 الضريبي</label>
                             <div class="col-sm-10-add-new-contract">
                                 <input type="text" class="form-control form-control-sm" id="colFormLabelSm"
@@ -230,71 +196,42 @@
 
 
                         <div class="form-group-add-new-contract row  mb-4">
-                            <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm"
-                            style="width: 40%; border-style: dashed; border-width: 1px; border-radius: 5px;"
-                            >شهادة ضريبة القيمة المضافة / شهادة الزكاة
-                                والدخل
+                            <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm" style="width: 40%; border-style: dashed; border-width: 1px; border-radius: 5px;">تفويض التوقيع
 
                             </label>
-                            <div class="col-sm-10-add-new-contract">
-                                <input type="file" class="form-control form-control-sm" id="colFormLabelSm"
-                                    placeholder="شهادة الزكاة والدخل للمقاول من الباطن (سارية المفعول)" {{form.zakat_Income_certificate}}
-                            </div>
-                        </div>
 
+                            
 
-                        <div class="form-group-add-new-contract row  mb-4">
-                            <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm"
-                            style="width: 40%; border-style: dashed; border-width: 1px; border-radius: 5px;"
-                            >تفويض التوقيع
+                            <div class="col-sm-10-add-new-contract" style="margin-bottom: 1%;">
 
-                            </label>
-                            <div class="col-sm-10-add-new-contract">
                                 <input type="file" class="form-control form-control-sm" id="colFormLabelSm"
                                     placeholder="تفويض التوقيع" {{form.signature_authorization}}
+                                
                             </div>
-                        </div>
-
-                        <div class="form-group-add-new-contract row  mb-4">
-                            <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm"
-                            style="width: 40%; border-style: dashed; border-width: 1px; border-radius: 5px;"
-                            >اسم المفوض
-
-                            </label>
-                            <div class="col-sm-10-add-new-contract">
+                            <div class="col-sm-10-add-new-contract" style="margin-bottom: 1%;">
                                 <input type="text" class="form-control form-control-sm" id="colFormLabelSm"
                                     placeholder="اسم المفوض" {{form.delegated_nam}}
                             </div>
-                        </div>
-
-                        <div class="form-group-add-new-contract row  mb-4">
-                            <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm"
-                            style="width: 40%; border-style: dashed; border-width: 1px; border-radius: 5px;"
-                            >المسمى الوظيفي للمفوض
-
-                            </label>
-                            <div class="col-sm-10-add-new-contract">
+                            <div class="col-sm-10-add-new-contract" style="margin-bottom: 1%;">
                                 <input type="text" class="form-control form-control-sm" id="colFormLabelSm"
-                                    placeholder="المسمى الوظيفي للمفوض" {{form.delegated_title}}
+                                    placeholder="المسمى الوظيفي" {{form.delegated_title}}
+                            </div>
+                            <div class="col-sm-10-add-new-contract" style="margin-bottom: 1%;">
+                                <input type="text" class="form-control form-control-sm" id="colFormLabelSm"
+                                    placeholder="الهوية / الإقامة" {{form.gov_id_no}}
                             </div>
                         </div>
 
                         <div class="form-group-add-new-contract row  mb-4">
-                            <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm"
-                            style="width: 40%; border-style: dashed; border-width: 1px; border-radius: 5px;"
-                            >رقم الهوية/الإقامة للمفوض
-
-                            </label>
+                            <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm" style="width: 40%; border-style: dashed; border-width: 1px; border-radius: 5px;">ممثل</label>
                             <div class="col-sm-10-add-new-contract">
                                 <input type="text" class="form-control form-control-sm" id="colFormLabelSm"
-                                    placeholder="الهوية / الإقامة للمفوض" {{form.gov_id_no}}
+                                    placeholder="ممثل الطرف الثاني" {{form.second_party_representative}}
                             </div>
                         </div>
 
                         <div class="form-group-add-new-contract row  mb-4">
-                            <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm"
-                            style="width: 40%; border-style: dashed; border-width: 1px; border-radius: 5px;"
-                            >رقم
+                            <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm" style="width: 40%; border-style: dashed; border-width: 1px; border-radius: 5px;">رقم
                                 التواصل</label>
                             <div class="col-sm-10-add-new-contract">
                                 <input type="text" class="form-control form-control-sm" id="colFormLabelSm"
@@ -303,9 +240,7 @@
                         </div>
 
                         <div class="form-group-add-new-contract row  mb-4">
-                            <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm"
-                            style="width: 40%; border-style: dashed; border-width: 1px; border-radius: 5px;"
-                            >عنوان البريد
+                            <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm" style="width: 40%; border-style: dashed; border-width: 1px; border-radius: 5px;">عنوان البريد
                                 الإلكتروني</label>
                             <div class="col-sm-10-add-new-contract">
                                 <input type="email" class="form-control form-control-sm" id="colFormLabelSm"
@@ -314,9 +249,7 @@
                         </div>
 
                         <div class="form-group-add-new-contract row  mb-4">
-                            <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm"
-                            style="width: 40%; border-style: dashed; border-width: 1px; border-radius: 5px;"
-                            >الرمز
+                            <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm" style="width: 40%; border-style: dashed; border-width: 1px; border-radius: 5px;">الرمز
                                 البريدي</label>
                             <div class="col-sm-10-add-new-contract">
                                 <input type="text" class="form-control form-control-sm" id="colFormLabelSm"
@@ -326,68 +259,34 @@
 
                         <div class="form-group-add-new-contract row  mb-4">
                             <label for="colFormLabelSm"
-                                class="col-sm-2 col-form-label col-form-label-sm"
-                                style="width: 40%; border-style: dashed; border-width: 1px; border-radius: 5px;"
-                                >العنوان</label>
+                                class="col-sm-2 col-form-label col-form-label-sm" style="width: 40%; border-style: dashed; border-width: 1px; border-radius: 5px;">العنوان</label>
                             <div class="col-sm-10-add-new-contract">
                                 <input type="text" class="form-control form-control-sm" id="colFormLabelSm"
                                     placeholder="العنوان" {{form.address}}
                             </div>
                         </div>
 
-
                         <div class="form-group-add-new-contract row  mb-4">
-                            <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm"
-                            style="width: 40%; border-style: dashed; border-width: 1px; border-radius: 5px;"
-                            >ممثل الطرف الثاني في الموقع</label>
-                            <div class="col-sm-10-add-new-contract">
-                                <input type="text" class="form-control form-control-sm" id="colFormLabelSm"
-                                    placeholder="ممثل الطرف الثاني" {{form.second_party_representative}}
-                            </div>
-                        </div>
-
-                        <div class="form-group-add-new-contract row  mb-4">
-                            <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm"
-                            style="width: 40%; border-style: dashed; border-width: 1px; border-radius: 5px;"
-                            >السجل التجاري
+                            <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm" style="width: 40%; border-style: dashed; border-width: 1px; border-radius: 5px;">السجل التجاري
                                 (ساري المفعول)
 
                             </label>
-                            <div class="col-sm-10-add-new-contract">
+                            <div class="col-sm-10-add-new-contract" style="margin-bottom: 1%;">
                                 <input type="file" class="form-control form-control-sm" id="colFormLabelSm"
                                     placeholder="السجل التجاري(ساري المفعول)" {{form.commercial_register}}
                             </div>
-                        </div>
-
-                        <div class="form-group-add-new-contract row  mb-4">
-                            <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm"
-                            style="width: 40%; border-style: dashed; border-width: 1px; border-radius: 5px;"
-                            >تاريخ انتهاء السجل التجاري
-                            </label>
-
-                            <div class="col-sm-10-add-new-contract">
+                            <div class="col-sm-10-add-new-contract" style="margin-bottom: 1%;">
                                 <input type="date" class="form-control form-control-sm" id="colFormLabelSm"
                                     placeholder="تاريخ الانتهاء" {{form.commercial_register_date}}
                             </div>
-                        </div>
-
-
-                        <div class="form-group-add-new-contract row  mb-4">
-                            <label for="colFormLabelSm"
-                                class="col-sm-2 col-form-label col-form-label-sm"
-                                style="width: 40%; border-style: dashed; border-width: 1px; border-radius: 5px;"
-                                >مؤسسة/شركة</label>
-                            <div class="col-sm-10-add-new-contract">
-                                <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm" 
-                                style="width: 100%; border-style:solid; border-width: 1px; border-radius: 5px; border-color: darkgray; padding-right: 2%;">
-                                {{form.establishment_company}}
+                            <div class="col-sm-10-add-new-contract" style="margin-bottom: 1%;">
+                                <input type="text" class="form-control form-control-sm" id="colFormLabelSm"
+                                    placeholder="اسم المدير أو الوكيل المفوض" {{form.manager_authorized_agent}}
                             </div>
                         </div>
 
                         <div class="form-group-add-new-contract row  mb-4">
-                            <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm"
-                            style="width: 40%; border-style: dashed; border-width: 1px; border-radius: 5px;"
-                            >عقد التأسيس(إلزامي في حالة الشركات)
+                            <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm" style="width: 40%; border-style: dashed; border-width: 1px; border-radius: 5px;">عقد التأسيس
 
                             </label>
                             <div class="col-sm-10-add-new-contract">
@@ -397,43 +296,46 @@
                         </div>
 
                         <div class="form-group-add-new-contract row  mb-4">
-                            <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm"
-                            style="width: 40%; border-style: dashed; border-width: 1px; border-radius: 5px;"
-                            >الملف التعريفي
-                                وسابقة الأعمال
+                            <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm" style="width: 40%; border-style: dashed; border-width: 1px; border-radius: 5px;">شهادة الزكاة
+                                والدخل (سارية المفعول)
 
                             </label>
                             <div class="col-sm-10-add-new-contract">
                                 <input type="file" class="form-control form-control-sm" id="colFormLabelSm"
-                                    placeholder="الملف التعريفي وسابقة الأعمال" {{form.sub_contractor_profile}}
+                                    placeholder="شهادة الزكاة والدخل للمقاول من الباطن (سارية المفعول)" {{form.zakat_Income_certificate}}
                             </div>
                         </div>
-                        
+
                         <div class="form-group-add-new-contract row  mb-4">
-                            <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm"
-                            style="width: 40%; border-style: dashed; border-width: 1px; border-radius: 5px;"
-                            >جدول
+                            <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm" style="width: 40%; border-style: dashed; border-width: 1px; border-radius: 5px;">صورة من جدول
                                 كميات العقد الأصلي للمشروع
 
                             </label>
                             <div class="col-sm-10-add-new-contract">
                                 <input type="file" class="form-control form-control-sm" id="colFormLabelSm"
-                                    placeholder="جدول كميات العقد الأصلي للمشروع" {{form.project_original_contract_quantities_table_copy}}
+                                    placeholder="صورة من جدول كميات العقد الأصلي للمشروع">
                             </div>
                         </div>
 
-
-
                         <div class="form-group-add-new-contract row  mb-4">
-                            <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm"
-                            style="width: 40%; border-style: dashed; border-width: 1px; border-radius: 5px;"
-                            >جدول كميات
-                                العقد(للطرف الثاني)<br>ملف اكسيل (filename.xlsx)
+                            <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm" style="width: 40%; border-style: dashed; border-width: 1px; border-radius: 5px;">الملف التعريفي
+                                وسابقة الأعمال (إن تطلب الأمر)
 
                             </label>
                             <div class="col-sm-10-add-new-contract">
                                 <input type="file" class="form-control form-control-sm" id="colFormLabelSm"
-                                    placeholder="جدول كميات العقد" {{form.contract_quantities_table}}
+                                    placeholder="الملف التعريفي وسابقة الأعمال (إن تطلب الأمر)" {{form.sub_contractor_profile}}
+                            </div>
+                        </div>
+
+                        <div class="form-group-add-new-contract row  mb-4">
+                            <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm" style="width: 40%; border-style: dashed; border-width: 1px; border-radius: 5px;">جدول كميات
+                                العقد
+
+                            </label>
+                            <div class="col-sm-10-add-new-contract">
+                                <input type="file" class="form-control form-control-sm" id="colFormLabelSm"
+                                    placeholder="جدول كميات العقد">
                             </div>
                         </div>
 
@@ -447,80 +349,139 @@
 
         </div>
 
-        <div id="form_sizing" class="col-lg-12">
-            <div class="seperator-header-add-new-contract">
-                <h4 class="">الشروط الخاصة</h4>
-            </div>
-        </div>
+        <div id="basic" class="row layout-spacing layout-top-spacing">
+            <div class="col-lg-12">
+                <div class="statbox widget box box-shadow">
+                    <div class="widget-header">
 
-    <div id="basic" class="row layout-spacing layout-top-spacing" style="margin-top: 0;">
-        <div class="col-lg-12">
-            <div class="statbox widget box box-shadow">
-                <div class="widget-header">
+                    </div>
+                    <div class="widget-content widget-content-area">
+                        <div class="ql-toolbar ql-snow"><span class="ql-formats"><span class="ql-header ql-picker"><span
+                                        class="ql-picker-label" tabindex="0" role="button" aria-expanded="false"
+                                        aria-controls="ql-picker-options-0"><svg viewBox="0 0 18 18">
+                                            <polygon class="ql-stroke" points="7 11 9 13 11 11 7 11"></polygon>
+                                            <polygon class="ql-stroke" points="7 7 9 5 11 7 7 7"></polygon>
+                                        </svg></span><span class="ql-picker-options" aria-hidden="true" tabindex="-1"
+                                        id="ql-picker-options-0"><span tabindex="0" role="button" class="ql-picker-item"
+                                            data-value="1"></span><span tabindex="0" role="button"
+                                            class="ql-picker-item" data-value="2"></span><span tabindex="0"
+                                            role="button" class="ql-picker-item"></span></span></span><select
+                                    class="ql-header" style="display: none;">
+                                    <option value="1"></option>
+                                    <option value="2"></option>
+                                    <option selected="selected"></option>
+                                </select></span><span class="ql-formats"><button type="button" class="ql-bold"><svg
+                                        viewBox="0 0 18 18">
+                                        <path class="ql-stroke"
+                                            d="M5,4H9.5A2.5,2.5,0,0,1,12,6.5v0A2.5,2.5,0,0,1,9.5,9H5A0,0,0,0,1,5,9V4A0,0,0,0,1,5,4Z">
+                                        </path>
+                                        <path class="ql-stroke"
+                                            d="M5,9h5.5A2.5,2.5,0,0,1,13,11.5v0A2.5,2.5,0,0,1,10.5,14H5a0,0,0,0,1,0,0V9A0,0,0,0,1,5,9Z">
+                                        </path>
+                                    </svg></button><button type="button" class="ql-italic"><svg viewBox="0 0 18 18">
+                                        <line class="ql-stroke" x1="7" x2="13" y1="4" y2="4"></line>
+                                        <line class="ql-stroke" x1="5" x2="11" y1="14" y2="14"></line>
+                                        <line class="ql-stroke" x1="8" x2="10" y1="14" y2="4"></line>
+                                    </svg></button><button type="button" class="ql-underline"><svg viewBox="0 0 18 18">
+                                        <path class="ql-stroke"
+                                            d="M5,3V9a4.012,4.012,0,0,0,4,4H9a4.012,4.012,0,0,0,4-4V3"></path>
+                                        <rect class="ql-fill" height="1" rx="0.5" ry="0.5" width="12" x="3" y="15">
+                                        </rect>
+                                    </svg></button></span><span class="ql-formats"><button type="button"
+                                    class="ql-image"><svg viewBox="0 0 18 18">
+                                        <rect class="ql-stroke" height="10" width="12" x="3" y="4"></rect>
+                                        <circle class="ql-fill" cx="6" cy="7" r="1"></circle>
+                                        <polyline class="ql-even ql-fill"
+                                            points="5 12 5 11 7 9 8 10 11 7 13 9 13 12 5 12"></polyline>
+                                    </svg></button><button type="button" class="ql-code-block"><svg viewBox="0 0 18 18">
+                                        <polyline class="ql-even ql-stroke" points="5 7 3 9 5 11"></polyline>
+                                        <polyline class="ql-even ql-stroke" points="13 7 15 9 13 11"></polyline>
+                                        <line class="ql-stroke" x1="10" x2="8" y1="5" y2="13"></line>
+                                    </svg></button></span></div>
+                        <div id="editor-container" class="ql-container ql-snow-add-new-contract">
+                            <div class="ql-editor-add-new-contract" data-gramm="false" contenteditable="true"
+                                data-placeholder="Compose an epic...">
+                                {{form.special_conditions}}
+                            </div>
 
-                </div>
-                <div class="widget-content widget-content-area">
 
-                    <div id="editor-container" class="ql-container ql-snow-add-new-contract">
-                        <textarea style="height: 250px;width: 100%;" placeholder="
-مثال:
-*- يتم ذكر أية شروط خاصة تم الإتفاق عليها مع الطرف الثاني
-مثل: 
-                        
--   العقد توريد وتنفيذ لكن التوريد من الطرف الأول بالخصم على الطرف الثاني
--  العقد تنفيذ فقط وتوريد المواد يتم من خلال الطرف الأول إلى مستودع المشروع أو على رأس العمل
--  الأعمال المساحية مسئولية الطرف الأول 
--  العقد Back to back أي أنكل نطاق العمل مسئولية الطرف الثاني بما يشمل المخططات ، ........ ، .......... . 
 
-ملحوظة هامة : 
-
--  في حال عدم وجود شروط خاصة يجب كتابة ( لا يوجد ) لاستكمال الطلب 
-                        " {{form.special_conditions}}</textarea>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
 
 
-        <div id="form_sizing" class="col-lg-12">
-            <div class="seperator-header-add-new-contract">
-                <h4 class="">شروط الدفع</h4>
-            </div>
+
+
         </div>
 
+        <div id="basic" class="row layout-spacing layout-top-spacing">
+            <div class="col-lg-12">
+                <div class="statbox widget box box-shadow">
+                    <div class="widget-header">
 
-    <div id="basic" class="row layout-spacing layout-top-spacing" style="margin-top: 0;">
-        <div class="col-lg-12">
-            <div class="statbox widget box box-shadow">
-                <div class="widget-header">
+                    </div>
+                    <div class="widget-content widget-content-area">
+                        <div class="ql-toolbar ql-snow"><span class="ql-formats"><span class="ql-header ql-picker"><span
+                                        class="ql-picker-label" tabindex="0" role="button" aria-expanded="false"
+                                        aria-controls="ql-picker-options-0"><svg viewBox="0 0 18 18">
+                                            <polygon class="ql-stroke" points="7 11 9 13 11 11 7 11"></polygon>
+                                            <polygon class="ql-stroke" points="7 7 9 5 11 7 7 7"></polygon>
+                                        </svg></span><span class="ql-picker-options" aria-hidden="true" tabindex="-1"
+                                        id="ql-picker-options-0"><span tabindex="0" role="button" class="ql-picker-item"
+                                            data-value="1"></span><span tabindex="0" role="button"
+                                            class="ql-picker-item" data-value="2"></span><span tabindex="0"
+                                            role="button" class="ql-picker-item"></span></span></span><select
+                                    class="ql-header" style="display: none;">
+                                    <option value="1"></option>
+                                    <option value="2"></option>
+                                    <option selected="selected"></option>
+                                </select></span><span class="ql-formats"><button type="button" class="ql-bold"><svg
+                                        viewBox="0 0 18 18">
+                                        <path class="ql-stroke"
+                                            d="M5,4H9.5A2.5,2.5,0,0,1,12,6.5v0A2.5,2.5,0,0,1,9.5,9H5A0,0,0,0,1,5,9V4A0,0,0,0,1,5,4Z">
+                                        </path>
+                                        <path class="ql-stroke"
+                                            d="M5,9h5.5A2.5,2.5,0,0,1,13,11.5v0A2.5,2.5,0,0,1,10.5,14H5a0,0,0,0,1,0,0V9A0,0,0,0,1,5,9Z">
+                                        </path>
+                                    </svg></button><button type="button" class="ql-italic"><svg viewBox="0 0 18 18">
+                                        <line class="ql-stroke" x1="7" x2="13" y1="4" y2="4"></line>
+                                        <line class="ql-stroke" x1="5" x2="11" y1="14" y2="14"></line>
+                                        <line class="ql-stroke" x1="8" x2="10" y1="14" y2="4"></line>
+                                    </svg></button><button type="button" class="ql-underline"><svg viewBox="0 0 18 18">
+                                        <path class="ql-stroke"
+                                            d="M5,3V9a4.012,4.012,0,0,0,4,4H9a4.012,4.012,0,0,0,4-4V3"></path>
+                                        <rect class="ql-fill" height="1" rx="0.5" ry="0.5" width="12" x="3" y="15">
+                                        </rect>
+                                    </svg></button></span><span class="ql-formats"><button type="button"
+                                    class="ql-image"><svg viewBox="0 0 18 18">
+                                        <rect class="ql-stroke" height="10" width="12" x="3" y="4"></rect>
+                                        <circle class="ql-fill" cx="6" cy="7" r="1"></circle>
+                                        <polyline class="ql-even ql-fill"
+                                            points="5 12 5 11 7 9 8 10 11 7 13 9 13 12 5 12"></polyline>
+                                    </svg></button><button type="button" class="ql-code-block"><svg viewBox="0 0 18 18">
+                                        <polyline class="ql-even ql-stroke" points="5 7 3 9 5 11"></polyline>
+                                        <polyline class="ql-even ql-stroke" points="13 7 15 9 13 11"></polyline>
+                                        <line class="ql-stroke" x1="10" x2="8" y1="5" y2="13"></line>
+                                    </svg></button></span></div>
+                        <div id="editor-container" class="ql-container ql-snow-add-new-contract">
+                            <div class="ql-editor-add-new-contract" data-gramm="false" contenteditable="true"
+                                data-placeholder="Compose an epic...">
+                                {{form.payment_terms}}
+                            </div>
 
-                </div>
-                <div class="widget-content widget-content-area">
 
-                    <div id="editor-container" class="ql-container ql-snow-add-new-contract">
-                        <textarea style="height: 350px;width: 100%;" placeholder="
-مثال:
 
-1- يقوم المقاول من الباطن بتقديم مستخلصات جارية  عن الأعمال المنفذة والمعتمدة من ٳستشارى المشروع والمالك بالموقع وذلك بالأسعار الواردة بمقايسة قوائم الكميات  وتكون طريقة السداد طبقاً للآتي: 
-
-2- (90%) من قيمة فاتورة تقدم العمل وفق بيان نسب الصرف المعتمد، وبعد قبول استلام الأعمال تفصيلياً من استشارى المشروع والمالك شريطة التزام المقاول من الباطن بالجدول الزمنى للمشروع.
-
-3- يتم حجز نسبة (10%) من قيمة كل فاتورة يقدمها المقاول من الباطن للأعمال المنفذة و المعتمدة من مهندس المقاول الرئيسي، وبعد قبول استلام الأعمال تفصيلياً من استشارى المشروع والمالك، على أن تصرف هذه النسبة بعد التسليم الإبتدائي لهذه الأعمال خالية من العيوب و إحضار شهادة اخلاء طرف من قبل الجهات ذات العلاقة
-
-ملحوظة هامة:
-
-- في حال كانت شروط الدفع وفقاً للمذكور أعلاه يكتفى بكتابة (وفقا لسياسات الشركة)
-
-في حال طلب الطرف الثاني صرف دفعة مقدمة بقيمة تتجاوز (............) يجب التنبيه بأنها تصرف مقابل :
-                        - إما ضمان بنكي ساري طوال مدة العقد
-                        - أو سند لأمر موثق غرفة تجارية على منصة نافذ
-" {{form.payment_terms}}</textarea>
+                        </div>
                     </div>
                 </div>
             </div>
+
+
+
+
         </div>
-    </div>
 
         <input type="submit" name="txt" class="mt-4 btn btn-add-new-contract" value="طلب اصدار عقد جديد">
 
